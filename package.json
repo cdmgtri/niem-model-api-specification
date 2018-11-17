@@ -1,0 +1,51 @@
+{
+  "name": "iepd-data",
+  "version": "1.0.0",
+  "description": "Mock API for the NIEM model structure",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run render && npm run test && npm run docs",
+    "docs": "redoc-cli bundle openapi.yaml && mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
+    "render": "npm run render:schemas && npm run render:openapi",
+    "render:schemas": "yaml2json -p -s schemas",
+    "render:openapi": "speccy resolve openapi-base.yaml -j -o openapi.yaml",
+    "test": "npm run test:schemas && npm run test:examples && npm run test:openapi",
+    "test:schemas": "ajv -s schemas/json-schema-07.json -d \"schemas/*-schema.json\"",
+    "test:examples": "ajv -s schemas/api-schema.json -r schemas/model-schema.json -d \"examples/**/*.json\"",
+    "test:openapi": "speccy lint -s openapi-tags-alphabetical openapi.yaml",
+    "watch": "npm-watch build",
+    "watch:examples": "npm-watch test:examples"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ajv-cli": "^3.0.0",
+    "cash": "^0.8.0",
+    "npm-watch": "^0.4.0",
+    "redoc-cli": "^0.7.0",
+    "replace": "^1.0.0",
+    "replace-in-files": "^1.1.3",
+    "speccy": "^0.8.5",
+    "xml-js": "^1.6.8",
+    "yamljs": "^0.3.0"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "schemas",
+        "examples",
+        "."
+      ],
+      "extensions": "yaml",
+      "ignore": "openapi.yaml"
+    },
+    "test:examples": {
+      "patterns": [
+        "examples"
+      ],
+      "extensions": "json"
+    }
+  },
+  "dependencies": {}
+}

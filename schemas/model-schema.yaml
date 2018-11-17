@@ -1,0 +1,100 @@
+
+$schema: http://json-schema.org/draft-07/schema
+
+# Workaround:
+# - ajv requires $refs to reference $id
+# - VSCode requires $refs to reference file paths
+# - Assigning file path as the $id value supports both
+$id: model-schema.json
+
+properties:
+
+  $schema:
+    type: string
+
+  model:
+    $ref: "#/definitions/modelType"
+    description: A representation of the NIEM data model, an IEPD, an EIEM, or another kind of NIEM-based data model.
+
+  name:
+    type: string
+    description: A name of a resource.
+
+  definition:
+    type: string
+    description: A definition for or description of a resource.
+
+  version:
+    $ref: "#/definitions/versionType"
+    description: A specific version or release of a model.
+
+  versionLabel:
+    type: string
+    description: A version label, made up of the version number and an optional draft identifier.
+    example: "1.0"
+
+  baseNIEM:
+    type: string
+    description: A NIEM release that this resource is based on.
+    example: "4.0"
+
+  more:
+    type: object
+    description: Any additional metadata to be captured.
+
+definitions:
+
+  modelType:
+    type: object
+    description: A data type representing the NIEM data model, an IEPD, an EIEM, or another kind of NIEM-based data model.
+    properties:
+      name:
+        $ref: "#/properties/name"
+      definition:
+        $ref: "#/properties/definition"
+      description:
+        type: string
+        description: A detailed description of a model.
+      source:
+        type: string
+        description: An authoritative source for the model.
+      website:
+        type: string
+        description: A URL for an informational website about this model.
+      more:
+        $ref: "#/properties/more"
+
+  versionType:
+    type: object
+    description: A data type for a specific version or release of a model.
+    properties:
+      modelName:
+        type: string
+        description: A name of the model to which this version belongs.
+      versionNumber:
+        type: string
+        description: A version number.
+      draft:
+        type: string
+        description: A sub-version number, such as a pre-release identifier.
+        example: alpha1
+      baseNIEM:
+        $ref: "#/properties/baseNIEM"
+      uri:
+        type: string
+        description: A target namespace or other ID for this model version.
+      changeSummary:
+        type: string
+        description: A summary of the changes from the previous version, if applicable.
+      packageURL:
+        type: string
+        description: A URL for the model package folder.
+      more:
+        $ref: "#/properties/more"
+        example:
+          metadata.xml:
+            Metadata:
+              URI:
+              Name:
+              Summary:
+              Version:

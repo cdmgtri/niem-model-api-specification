@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "api-schema.json",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "modelResponse": {
+      "$ref": "#/definitions/modelResponseType"
+    },
+    "versionResponse": {
+      "$ref": "#/definitions/versionResponseType"
+    }
+  },
+  "definitions": {
+    "modelResponseType": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "$ref": "#/properties/$schema"
+        },
+        "data": {
+          "$ref": "model-schema.json#/definitions/modelType"
+        },
+        "links": {
+          "$ref": "#/definitions/modelLinksType"
+        }
+      },
+      "example": {
+        "$ref": "../examples/niem/modelResponse.json#/modelResponse"
+      }
+    },
+    "modelLinksType": {
+      "type": "object",
+      "description": "A data type for metadata about model-related resources.",
+      "properties": {
+        "href": {
+          "$ref": "#/definitions/hrefType"
+        },
+        "versions": {
+          "$ref": "#/definitions/relatedResourceType"
+        }
+      }
+    },
+    "versionResponseType": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "$ref": "#/properties/$schema"
+        },
+        "data": {
+          "$ref": "model-schema.json#/definitions/versionType"
+        },
+        "links": {
+          "$ref": "#/definitions/versionLinksType"
+        }
+      },
+      "example": {
+        "$ref": "../examples/iepd/versionResponse2.json#/versionResponse"
+      }
+    },
+    "versionLinksType": {
+      "type": "object",
+      "description": "A data type for metadata about version-related resources.",
+      "properties": {
+        "href": {
+          "$ref": "#/definitions/hrefType"
+        },
+        "zip": {
+          "$ref": "#/definitions/hrefType",
+          "description": "(Temporary workaround) The location of the zip file for this project."
+        },
+        "model": {
+          "$ref": "#/definitions/hrefType"
+        },
+        "namespaces": {
+          "$ref": "#/definitions/relatedResourceType"
+        },
+        "properties": {
+          "$ref": "#/definitions/relatedResourceType"
+        },
+        "types": {
+          "$ref": "#/definitions/relatedResourceType"
+        },
+        "codes": {
+          "$ref": "#/definitions/relatedResourceType"
+        }
+      }
+    },
+    "relatedResourceType": {
+      "type": "object",
+      "description": "A data type for metadata about other resources related to the source resource.",
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "href": {
+          "$ref": "#/definitions/hrefType"
+        }
+      }
+    },
+    "uriType": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "hrefType": {
+      "$ref": "#/definitions/uriType",
+      "description": "A URI for the target resource.",
+      "example": "/resource/:resourceID"
+    }
+  }
+}

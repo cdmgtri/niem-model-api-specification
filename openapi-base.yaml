@@ -1,0 +1,182 @@
+
+openapi: "3.0.2"
+
+info:
+  title: NIEM Model API
+  description: |
+
+    This project defines a mock static REST API to provide easy access to release and IEPD metadata and components.  This is to support the development of the future NIEM tool strategy and tool prototyping in a simple manner.
+
+    Content will be provided in a separate GitHub project as JSON files using GitHub Pages.  This setup will look and behave similar to a regular REST API, with a few exceptions...
+
+    - Endpoints will end with `.json`, corresponding to the hosted JSON files.
+    - No server-side processing is available, so only full data files can be returned (no filtered or paginated results, no query strings on URLs).
+
+    Note that this API is under development and is subject to drastic changes.
+
+  version: "0.1"
+  contact:
+    url: https://github.com/cdmgtri/niem-model-api-specification/
+
+servers:
+  - url: https://cdmgtri.github.io/niem-model-api
+
+tags:
+  - name: repository
+  - name: models
+  - name: versions
+  - name: namespaces
+  - name: properties
+  - name: types
+  - name: codes
+
+paths:
+
+
+  /models.json:
+    get:
+      summary: Find models
+      operationId: getModels
+      tags:
+        - models
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/modelResponseType"
+              example:
+                value:
+                  - $ref: ./examples/niem/modelResponse.json#/modelResponse
+                  - $ref: ./examples/iepd/modelResponse.json#/modelResponse
+        default:
+          $ref: "#/components/responses/NotFound"
+
+  /models/{modelID}.json:
+    get:
+      summary: Find model by ID
+      operationId: getModelByID
+      tags:
+        - models
+      parameters:
+        - $ref: "#/components/parameters/modelID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/modelResponseType"
+              examples:
+                NIEM:
+                  value:
+                    $ref: examples/niem/modelResponse.json#/modelResponse
+                "Sample IEPD":
+                  value:
+                    $ref: examples/iepd/modelResponse.json#/modelResponse
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /models/{modelID}/versions.json:
+    get:
+      summary: Find versions
+      operationId: getVersions
+      tags:
+        - versions
+      parameters:
+        - $ref: "#/components/parameters/modelID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/versionResponseType"
+              example:
+                value:
+                  -  $ref: ./examples/iepd/versionResponse1.json#/versionResponse
+                  -  $ref: ./examples/iepd/versionResponse2.json#/versionResponse
+        default:
+          $ref: "#/components/responses/NotFound"
+
+  /versions/{versionID}.json:
+    get:
+      summary: Find version by ID
+      operationId: getVersionByID
+      tags:
+        - versions
+      parameters:
+        - $ref: "#/components/parameters/versionID"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/versionResponseType"
+              examples:
+                NIEM:
+                  value:
+                    $ref: examples/niem/versionResponse.json#/versionResponse
+                "Sample IEPD":
+                  value:
+                    $ref: examples/iepd/versionResponse2.json#/versionResponse
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+
+  schemas:
+
+    modelResponseType:
+      type: object
+      $ref: ./schemas/api-schema.json#/definitions/modelResponseType
+
+    versionResponseType:
+      type: object
+      $ref: ./schemas/api-schema.json#/definitions/versionResponseType
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+
+  parameters:
+    modelID:
+      name: modelID
+      in: path
+      required: true
+      description: The id of the model to find.
+      schema:
+        type: string
+      example: hvpd-arrest-rpt
+    versionID:
+      name: versionID
+      in: path
+      required: true
+      description: The id of the version to find.
+      schema:
+        type: string
+      example: hvpd-arrest-rpt-1.0
+
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          example:
+            code: 404
+            message: "The resource was not found"
