@@ -24,14 +24,9 @@ properties:
     type: string
     description: A definition for or description of a resource.
 
-  version:
-    $ref: "#/definitions/versionType"
+  package:
+    $ref: "#/definitions/packageType"
     description: A specific version or release of a model.
-
-  versionLabel:
-    type: string
-    description: A version label, made up of the version number and an optional draft identifier.
-    example: "1.0"
 
   baseNIEM:
     type: string
@@ -58,20 +53,27 @@ definitions:
       source:
         type: string
         description: An authoritative source for the model.
+      contactInfo:
+        type: string
+        description: A set of contact information for the model.
       website:
         type: string
         description: A URL for an informational website about this model.
+      packages:
+        type: array
+        items:
+          $ref: "#/definitions/packageType"
       more:
         $ref: "#/properties/more"
+    additionalProperties: false
 
-  versionType:
+  packageType:
     type: object
     description: A data type for a specific version or release of a model.
     properties:
-      modelName:
-        type: string
-        description: A name of the model to which this version belongs.
-      versionNumber:
+      model:
+        $ref: "#/properties/model"
+      version:
         type: string
         description: A version number.
       draft:
@@ -82,11 +84,11 @@ definitions:
         $ref: "#/properties/baseNIEM"
       uri:
         type: string
-        description: A target namespace or other ID for this model version.
+        description: A target namespace or other ID for this model package.
       changeSummary:
         type: string
-        description: A summary of the changes from the previous version, if applicable.
-      packageURL:
+        description: A summary of the changes from the previous package, if applicable.
+      location:
         type: string
         description: A URL for the model package folder.
       more:
@@ -98,3 +100,4 @@ definitions:
               Name:
               Summary:
               Version:
+    additionalProperties: false

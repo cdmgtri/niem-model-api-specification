@@ -12,9 +12,9 @@
     },
     "links": {
       "href": "/model/hvpd-arrest-rpt",
-      "versions": {
+      "packages": {
         "count": 2,
-        "href": "/model/hvpd-arrest-rpt/versions"
+        "href": "/model/hvpd-arrest-rpt/packages"
       }
     }
   }

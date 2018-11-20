@@ -11,8 +11,8 @@ properties:
   modelResponse:
     $ref: "#/definitions/modelResponseType"
 
-  versionResponse:
-    $ref: "#/definitions/versionResponseType"
+  packageResponse:
+    $ref: "#/definitions/packageResponseType"
 
 definitions:
 
@@ -27,6 +27,7 @@ definitions:
         $ref: "#/definitions/modelLinksType"
     example:
       $ref: ../examples/niem/modelResponse.json#/modelResponse
+    additionalProperties: false
 
   modelLinksType:
     type: object
@@ -34,24 +35,26 @@ definitions:
     properties:
       href:
         $ref: "#/definitions/hrefType"
-      versions:
+      packages:
         $ref: "#/definitions/relatedResourceType"
+    additionalProperties: false
 
-  versionResponseType:
+  packageResponseType:
     type: object
     properties:
       $schema:
         $ref: "#/properties/$schema"
       data:
-        $ref: model-schema.json#/definitions/versionType
+        $ref: model-schema.json#/definitions/packageType
       links:
-        $ref: "#/definitions/versionLinksType"
+        $ref: "#/definitions/packageLinksType"
     example:
-      $ref: ../examples/iepd/versionResponse2.json#/versionResponse
+      $ref: ../examples/iepd/packageResponse2.json#/packageResponse
+    additionalProperties: false
 
-  versionLinksType:
+  packageLinksType:
     type: object
-    description: A data type for metadata about version-related resources.
+    description: A data type for metadata about package-related resources.
     properties:
       href:
         $ref: "#/definitions/hrefType"
@@ -59,19 +62,30 @@ definitions:
         $ref: "#/definitions/hrefType"
         description: (Temporary workaround) The location of the zip file for this project.
       model:
-        $ref: "#/definitions/hrefType"
+        $ref: "#/definitions/relatedResourceType"
       namespaces:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/relatedResourcesType"
       properties:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/relatedResourcesType"
       types:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/relatedResourcesType"
       codes:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/relatedResourcesType"
+    additionalProperties: false
 
   relatedResourceType:
     type: object
-    description: A data type for metadata about other resources related to the source resource.
+    description: A data type for metadata about a singular resource related to the source resource.
+    properties:
+      label:
+        type: string
+        description: A relative label for a resource, such as a version number or a qualified name.
+      href:
+        $ref: "#/definitions/hrefType"
+
+  relatedResourcesType:
+    type: object
+    description: A data type for metadata about potentially multiple resources related to the source resource.
     properties:
       count:
         type: integer
@@ -86,3 +100,5 @@ definitions:
     $ref: "#/definitions/uriType"
     description: A URI for the target resource.
     example: /resource/:resourceID
+
+additionalProperties: false

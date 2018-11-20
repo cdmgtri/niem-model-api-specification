@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/api-schema.json",
+  "packageResponse": {
+    "data": {
+      "version": "1.0",
+      "baseNIEM": "2.0",
+      "location": "https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-1.0",
+      "uri": "https://example.com/hvpd/specifications/arrest-report/1.0",
+      "changeSummary": "Initial IEPD"
+    },
+    "links": {
+      "href": "/packages/hvpd-arrest-rpt-1.0",
+      "zip": "https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-1.0.zip",
+      "model": {
+        "label": "Hill Valley Arrest Report",
+        "href": "/models/hvpd-arrest-rpt"
+      },
+      "namespaces": {
+        "count": 3,
+        "href": "/packages/hvpd-arrest-rpt-1.0/namespaces"
+      },
+      "properties": {
+        "count": 25,
+        "href": "/packages/hvpd-arrest-rpt-1.0/properties"
+      },
+      "types": {
+        "count": 14,
+        "href": "/packages/hvpd-arrest-rpt-1.0/types"
+      },
+      "codes": {
+        "count": 205,
+        "href": "/packages/hvpd-arrest-rpt-1.0/codes"
+      }
+    }
+  }
+}
