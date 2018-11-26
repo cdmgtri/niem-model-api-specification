@@ -31,16 +31,16 @@ Due to its simpler syntax, the source of the model and api schemas are YAML file
 ### Installation
 
 ```sh
-npm run install
+npm install
 ```
 
-### Render
+### Convert
 
 - Generate the JSON Schema versions of the model and api definitions from the corresponding YAML file.
 - Generate the `openapi.yaml` file with resolved file references from the `openapi-base.yaml` file.
 
 ```sh
-npm run render
+npm run convert
 ```
 
 ### Test
@@ -65,7 +65,7 @@ npm run docs
 
 Run the above steps with one command:
 
-- Render
+- Convert
 - Test
 - Documentation
 
@@ -89,6 +89,5 @@ npm run watch:examples
 
 ## TODO
 
-- Define additional model and version metadata
-- Define components
+- Update based on changes to `niem-model-schema` repo.
 - Update contact url in `openapi-base.yaml` if pushed to niem

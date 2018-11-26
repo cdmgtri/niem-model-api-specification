@@ -22,7 +22,7 @@ definitions:
       $schema:
         $ref: "#/properties/$schema"
       data:
-        $ref: model-schema.json#/definitions/modelType
+        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/modelType
       links:
         $ref: "#/definitions/modelLinksType"
     example:
@@ -45,7 +45,7 @@ definitions:
       $schema:
         $ref: "#/properties/$schema"
       data:
-        $ref: model-schema.json#/definitions/packageType
+        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/packageType
       links:
         $ref: "#/definitions/packageLinksType"
     example:

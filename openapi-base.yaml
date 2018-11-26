@@ -24,7 +24,6 @@ servers:
   - url: https://cdmgtri.github.io/niem-model-api
 
 tags:
-  - name: repository
   - name: models
   - name: packages
   - name: namespaces
