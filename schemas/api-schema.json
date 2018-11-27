@@ -15,6 +15,7 @@
   "definitions": {
     "ModelResponseType": {
       "type": "object",
+      "description": "Represents a NIEM Model API model response.",
       "properties": {
         "$schema": {
           "type": "string"
@@ -46,6 +47,7 @@
     },
     "PackageResponseType": {
       "type": "object",
+      "description": "Represents a NIEM Model API package response.",
       "properties": {
         "$schema": {
           "$ref": "#/properties/$schema"

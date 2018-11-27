@@ -73,12 +73,24 @@ Run the above steps with one command:
 npm run build
 ```
 
+## JSDocs
+
+Generate JSDocs for the API schema definitions.
+
+Note: The library that generates the JSDocs is throwing an error when running on the original JSON schema (with reference) and does not generate sub-properties correctly for the dereferenced schema.  After generating, fix jsdocs/index.js by hand to reuse related types rather than defining sub-properties.
+
+```bash
+npm run jsdocs
+
+# Fix JSDoc type definitions in jsdocs/index.js by hand.
+```
+
 ### Watch file changes
 
 Generate an updated build on changes to YAML files:
 
 ```sh
-npm run watch
+npm run watch:schemas
 ```
 
 Run validation on updated example JSON instances:

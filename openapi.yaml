@@ -253,6 +253,7 @@ components:
   schemas:
     modelResponseType:
       type: object
+      description: Represents a NIEM Model API model response.
       properties:
         $schema:
           type: string
@@ -352,6 +353,7 @@ components:
       additionalProperties: false
     packageResponseType:
       type: object
+      description: Represents a NIEM Model API package response.
       properties:
         $schema:
           type: string
