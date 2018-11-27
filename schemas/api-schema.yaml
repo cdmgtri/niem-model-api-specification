@@ -9,50 +9,50 @@ properties:
     type: string
 
   modelResponse:
-    $ref: "#/definitions/modelResponseType"
+    $ref: "#/definitions/ModelResponseType"
 
   packageResponse:
-    $ref: "#/definitions/packageResponseType"
+    $ref: "#/definitions/PackageResponseType"
 
 definitions:
 
-  modelResponseType:
+  ModelResponseType:
     type: object
     properties:
       $schema:
-        $ref: "#/properties/$schema"
+        type: string
       data:
-        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/modelType
+        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/ModelType
       links:
-        $ref: "#/definitions/modelLinksType"
+        $ref: "#/definitions/ModelLinksType"
     example:
       $ref: ../examples/niem/modelResponse.json#/modelResponse
     additionalProperties: false
 
-  modelLinksType:
+  ModelLinksType:
     type: object
     description: A data type for metadata about model-related resources.
     properties:
       href:
         $ref: "#/definitions/hrefType"
       packages:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/RelatedResourceType"
     additionalProperties: false
 
-  packageResponseType:
+  PackageResponseType:
     type: object
     properties:
       $schema:
         $ref: "#/properties/$schema"
       data:
-        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/packageType
+        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/PackageType
       links:
-        $ref: "#/definitions/packageLinksType"
+        $ref: "#/definitions/PackageLinksType"
     example:
       $ref: ../examples/iepd/packageResponse2.json#/packageResponse
     additionalProperties: false
 
-  packageLinksType:
+  PackageLinksType:
     type: object
     description: A data type for metadata about package-related resources.
     properties:
@@ -62,18 +62,18 @@ definitions:
         $ref: "#/definitions/hrefType"
         description: (Temporary workaround) The location of the zip file for this project.
       model:
-        $ref: "#/definitions/relatedResourceType"
+        $ref: "#/definitions/RelatedResourceType"
       namespaces:
-        $ref: "#/definitions/relatedResourcesType"
+        $ref: "#/definitions/RelatedResourcesType"
       properties:
-        $ref: "#/definitions/relatedResourcesType"
+        $ref: "#/definitions/RelatedResourcesType"
       types:
-        $ref: "#/definitions/relatedResourcesType"
+        $ref: "#/definitions/RelatedResourcesType"
       codes:
-        $ref: "#/definitions/relatedResourcesType"
+        $ref: "#/definitions/RelatedResourcesType"
     additionalProperties: false
 
-  relatedResourceType:
+  RelatedResourceType:
     type: object
     description: A data type for metadata about a singular resource related to the source resource.
     properties:
@@ -83,7 +83,7 @@ definitions:
       href:
         $ref: "#/definitions/hrefType"
 
-  relatedResourcesType:
+  RelatedResourcesType:
     type: object
     description: A data type for metadata about potentially multiple resources related to the source resource.
     properties:

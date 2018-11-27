@@ -60,7 +60,6 @@ paths:
                       definition: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
                       description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
-                      more: {}
                     links:
                       href: /model/hvpd-arrest-rpt
                       packages:
@@ -105,7 +104,6 @@ paths:
                       definition: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
                       description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
-                      more: {}
                     links:
                       href: /model/hvpd-arrest-rpt
                       packages:
@@ -264,10 +262,10 @@ components:
           properties:
             name:
               type: string
-              description: A name of a resource.
+              description: A name of a model.
             definition:
               type: string
-              description: A definition for or description of a resource.
+              description: A definition or summary of a model.
             description:
               type: string
               description: A detailed description of a model.
@@ -282,12 +280,14 @@ components:
               description: A URL for an informational website about this model.
             packages:
               type: array
+              description: A set of packages that belong to this model.
               items:
                 type: object
                 description: A data type for a specific version or release of a model.
                 properties:
                   modelName:
                     type: string
+                    description: A name of the model to which this package belongs.
                   version:
                     type: string
                     description: A version number.
@@ -309,6 +309,8 @@ components:
                     type: string
                     description: A URL for the model package folder.
                   more:
+                    type: object
+                    description: Any additional metadata to be captured.
                     example:
                       metadata.xml:
                         Metadata:
@@ -316,20 +318,13 @@ components:
                           Name: null
                           Summary: null
                           Version: null
-                    type: object
-                    description: Any additional metadata to be captured.
                 additionalProperties: false
-            more:
-              type: object
-              description: Any additional metadata to be captured.
           additionalProperties: false
         links:
           type: object
           description: A data type for metadata about model-related resources.
           properties:
             href:
-              description: A URI for the target resource.
-              example: '/resource/:resourceID'
               type: string
               format: uri-reference
             packages:
@@ -340,10 +335,7 @@ components:
                   type: string
                   description: 'A relative label for a resource, such as a version number or a qualified name.'
                 href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+                  $ref: '#/components/schemas/modelResponseType/properties/links/properties/href'
           additionalProperties: false
       example:
         data:
@@ -369,6 +361,7 @@ components:
           properties:
             modelName:
               type: string
+              description: A name of the model to which this package belongs.
             version:
               type: string
               description: A version number.
@@ -390,6 +383,8 @@ components:
               type: string
               description: A URL for the model package folder.
             more:
+              type: object
+              description: Any additional metadata to be captured.
               example:
                 metadata.xml:
                   Metadata:
@@ -397,23 +392,16 @@ components:
                     Name: null
                     Summary: null
                     Version: null
-              type: object
-              description: Any additional metadata to be captured.
           additionalProperties: false
         links:
           type: object
           description: A data type for metadata about package-related resources.
           properties:
             href:
-              description: A URI for the target resource.
-              example: '/resource/:resourceID'
               type: string
               format: uri-reference
             zip:
-              description: (Temporary workaround) The location of the zip file for this project.
-              example: '/resource/:resourceID'
-              type: string
-              format: uri-reference
+              $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
             model:
               type: object
               description: A data type for metadata about a singular resource related to the source resource.
@@ -422,10 +410,7 @@ components:
                   type: string
                   description: 'A relative label for a resource, such as a version number or a qualified name.'
                 href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+                  $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
             namespaces:
               type: object
               description: A data type for metadata about potentially multiple resources related to the source resource.
@@ -433,43 +418,13 @@ components:
                 count:
                   type: integer
                 href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+                  $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
             properties:
-              type: object
-              description: A data type for metadata about potentially multiple resources related to the source resource.
-              properties:
-                count:
-                  type: integer
-                href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
             types:
-              type: object
-              description: A data type for metadata about potentially multiple resources related to the source resource.
-              properties:
-                count:
-                  type: integer
-                href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
             codes:
-              type: object
-              description: A data type for metadata about potentially multiple resources related to the source resource.
-              properties:
-                count:
-                  type: integer
-                href:
-                  description: A URI for the target resource.
-                  example: '/resource/:resourceID'
-                  type: string
-                  format: uri-reference
+              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
           additionalProperties: false
       example:
         data:

@@ -136,11 +136,11 @@ components:
 
     modelResponseType:
       type: object
-      $ref: ./schemas/api-schema.json#/definitions/modelResponseType
+      $ref: ./schemas/api-schema.json#/definitions/ModelResponseType
 
     packageResponseType:
       type: object
-      $ref: ./schemas/api-schema.json#/definitions/packageResponseType
+      $ref: ./schemas/api-schema.json#/definitions/PackageResponseType
 
     Error:
       type: object
