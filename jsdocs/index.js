@@ -7,8 +7,9 @@
   * @typedef {Object} NIEMModel
   *
   * @property {string} [name] - A name of a model.
-  * @property {string} [definition] - A definition or summary of a model.
+  * @property {string} [summary] - A definition or summary statement of a model.
   * @property {string} [description] - A detailed description of a model.
+  * @property {enum} [kind] - A kind of model.
   * @property {string} [source] - An authoritative source for the model.
   * @property {string} [contactInfo] - A set of contact information for the model.
   * @property {string} [website] - A URL for an informational website about this model.
@@ -27,10 +28,9 @@
   * @property {string} [uri] - A target namespace or other ID for this model package.
   * @property {string} [changeSummary] - A summary of the changes from the previous package, if applicable.
   * @property {string} [location] - A URL for the model package folder.
+  * @property {array} [conformanceTargets] - One or more classes of artifact to which this artifact conforms.
   * @property {object} [more] - Any additional metadata to be captured.
   */
-
-
 
 /**
   * Represents a undefined object
@@ -46,6 +46,7 @@
   * A data type for metadata about model-related resources.
   * @typedef {Object} NIEMModelLinks
   *
+  * @property {string} [id] - An identifier for a model.
   * @property {string} [href] - A URI for the target resource.
   * @property {NIEMPackageLinks} [packages] - A data type for metadata about a singular resource related to the source resource.
   */
@@ -66,7 +67,8 @@
   * @typedef {Object} NIEMPackageLinks
   *
   * @property {string} [href] - A URI for the target resource.
-  * @property {string} [zip] - (Temporary workaround) The location of the zip file for this project.
+  * @property {string} [zip] - The location of the zip file for this project.
+  * @property {string} [folder] - The folder location for this package.
   * @property {NIEMRelatedResource} [model] - A data type for metadata about a singular resource related to the source resource.
   * @property {NIEMRelatedResources} [namespaces] - A data type for metadata about potentially multiple resources related to the source resource.
   * @property {NIEMRelatedResources} [properties] - A data type for metadata about potentially multiple resources related to the source resource.

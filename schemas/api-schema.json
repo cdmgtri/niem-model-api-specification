@@ -36,8 +36,13 @@
       "type": "object",
       "description": "A data type for metadata about model-related resources.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "An identifier for a model."
+        },
         "href": {
-          "$ref": "#/definitions/hrefType"
+          "$ref": "#/definitions/hrefType",
+          "description": "A url for this model"
         },
         "packages": {
           "$ref": "#/definitions/RelatedResourceType"
@@ -73,7 +78,11 @@
         },
         "zip": {
           "$ref": "#/definitions/hrefType",
-          "description": "(Temporary workaround) The location of the zip file for this project."
+          "description": "The location of the zip file for this package."
+        },
+        "folder": {
+          "$ref": "#/definitions/hrefType",
+          "description": "The folder location for this package."
         },
         "model": {
           "$ref": "#/definitions/RelatedResourceType"

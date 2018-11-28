@@ -20,13 +20,18 @@
                             "type": "string",
                             "description": "A name of a model."
                         },
-                        "definition": {
+                        "summary": {
                             "type": "string",
-                            "description": "A definition or summary of a model."
+                            "description": "A definition or summary statement of a model."
                         },
                         "description": {
                             "type": "string",
                             "description": "A detailed description of a model."
+                        },
+                        "kind": {
+                            "type": "string",
+                            "enum": ["NIEM Release", "NIEM Core Supplement", "NIEM Domain Update", "IEPD", "Local Model"],
+                            "description": "A kind of model."
                         },
                         "source": {
                             "type": "string",
@@ -77,6 +82,13 @@
                                         "type": "string",
                                         "description": "A URL for the model package folder."
                                     },
+                                    "conformanceTargets": {
+                                        "type": "array",
+                                        "description": "One or more classes of artifact to which this artifact conforms.",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
                                     "more": {
                                         "type": "object",
                                         "description": "Any additional metadata to be captured.",
@@ -102,8 +114,12 @@
                     "type": "object",
                     "description": "A data type for metadata about model-related resources.",
                     "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "An identifier for a model."
+                        },
                         "href": {
-                            "description": "A URI for the target resource.",
+                            "description": "A url for this model",
                             "example": "/resource/:resourceID",
                             "type": "string",
                             "format": "uri-reference"
@@ -132,7 +148,7 @@
                 "data": {
                     "name": "NIEM",
                     "source": "NIEM Management Office",
-                    "definition": "National Information Exchange Model releases",
+                    "summary": "National Information Exchange Model releases",
                     "description": "NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.",
                     "website": "https://niem.gov"
                 },
@@ -187,6 +203,13 @@
                             "type": "string",
                             "description": "A URL for the model package folder."
                         },
+                        "conformanceTargets": {
+                            "type": "array",
+                            "description": "One or more classes of artifact to which this artifact conforms.",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
                         "more": {
                             "type": "object",
                             "description": "Any additional metadata to be captured.",
@@ -215,7 +238,13 @@
                             "format": "uri-reference"
                         },
                         "zip": {
-                            "description": "(Temporary workaround) The location of the zip file for this project.",
+                            "description": "The location of the zip file for this package.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        },
+                        "folder": {
+                            "description": "The folder location for this package.",
                             "example": "/resource/:resourceID",
                             "type": "string",
                             "format": "uri-reference"
@@ -352,13 +381,18 @@
                             "type": "string",
                             "description": "A name of a model."
                         },
-                        "definition": {
+                        "summary": {
                             "type": "string",
-                            "description": "A definition or summary of a model."
+                            "description": "A definition or summary statement of a model."
                         },
                         "description": {
                             "type": "string",
                             "description": "A detailed description of a model."
+                        },
+                        "kind": {
+                            "type": "string",
+                            "enum": ["NIEM Release", "NIEM Core Supplement", "NIEM Domain Update", "IEPD", "Local Model"],
+                            "description": "A kind of model."
                         },
                         "source": {
                             "type": "string",
@@ -409,6 +443,13 @@
                                         "type": "string",
                                         "description": "A URL for the model package folder."
                                     },
+                                    "conformanceTargets": {
+                                        "type": "array",
+                                        "description": "One or more classes of artifact to which this artifact conforms.",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
                                     "more": {
                                         "type": "object",
                                         "description": "Any additional metadata to be captured.",
@@ -434,8 +475,12 @@
                     "type": "object",
                     "description": "A data type for metadata about model-related resources.",
                     "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "An identifier for a model."
+                        },
                         "href": {
-                            "description": "A URI for the target resource.",
+                            "description": "A url for this model",
                             "example": "/resource/:resourceID",
                             "type": "string",
                             "format": "uri-reference"
@@ -464,7 +509,7 @@
                 "data": {
                     "name": "NIEM",
                     "source": "NIEM Management Office",
-                    "definition": "National Information Exchange Model releases",
+                    "summary": "National Information Exchange Model releases",
                     "description": "NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.",
                     "website": "https://niem.gov"
                 },
@@ -482,8 +527,12 @@
             "type": "object",
             "description": "A data type for metadata about model-related resources.",
             "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "An identifier for a model."
+                },
                 "href": {
-                    "description": "A URI for the target resource.",
+                    "description": "A url for this model",
                     "example": "/resource/:resourceID",
                     "type": "string",
                     "format": "uri-reference"
@@ -548,6 +597,13 @@
                             "type": "string",
                             "description": "A URL for the model package folder."
                         },
+                        "conformanceTargets": {
+                            "type": "array",
+                            "description": "One or more classes of artifact to which this artifact conforms.",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
                         "more": {
                             "type": "object",
                             "description": "Any additional metadata to be captured.",
@@ -576,7 +632,13 @@
                             "format": "uri-reference"
                         },
                         "zip": {
-                            "description": "(Temporary workaround) The location of the zip file for this project.",
+                            "description": "The location of the zip file for this package.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        },
+                        "folder": {
+                            "description": "The folder location for this package.",
                             "example": "/resource/:resourceID",
                             "type": "string",
                             "format": "uri-reference"
@@ -707,7 +769,13 @@
                     "format": "uri-reference"
                 },
                 "zip": {
-                    "description": "(Temporary workaround) The location of the zip file for this project.",
+                    "description": "The location of the zip file for this package.",
+                    "example": "/resource/:resourceID",
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "folder": {
+                    "description": "The folder location for this package.",
                     "example": "/resource/:resourceID",
                     "type": "string",
                     "format": "uri-reference"

@@ -46,7 +46,7 @@ paths:
                   - data:
                       name: NIEM
                       source: NIEM Management Office
-                      definition: National Information Exchange Model releases
+                      summary: National Information Exchange Model releases
                       description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
                       website: 'https://niem.gov'
                     links:
@@ -57,7 +57,7 @@ paths:
                   - data:
                       name: Hill Valley Arrest Report
                       source: Hill Valley Police Department
-                      definition: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
+                      summary: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
                       description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
                     links:
@@ -88,7 +88,7 @@ paths:
                     data:
                       name: NIEM
                       source: NIEM Management Office
-                      definition: National Information Exchange Model releases
+                      summary: National Information Exchange Model releases
                       description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
                       website: 'https://niem.gov'
                     links:
@@ -101,7 +101,7 @@ paths:
                     data:
                       name: Hill Valley Arrest Report
                       source: Hill Valley Police Department
-                      definition: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
+                      summary: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
                       description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
                     links:
@@ -264,12 +264,21 @@ components:
             name:
               type: string
               description: A name of a model.
-            definition:
+            summary:
               type: string
-              description: A definition or summary of a model.
+              description: A definition or summary statement of a model.
             description:
               type: string
               description: A detailed description of a model.
+            kind:
+              type: string
+              enum:
+                - NIEM Release
+                - NIEM Core Supplement
+                - NIEM Domain Update
+                - IEPD
+                - Local Model
+              description: A kind of model.
             source:
               type: string
               description: An authoritative source for the model.
@@ -309,6 +318,11 @@ components:
                   location:
                     type: string
                     description: A URL for the model package folder.
+                  conformanceTargets:
+                    type: array
+                    description: One or more classes of artifact to which this artifact conforms.
+                    items:
+                      type: string
                   more:
                     type: object
                     description: Any additional metadata to be captured.
@@ -325,6 +339,9 @@ components:
           type: object
           description: A data type for metadata about model-related resources.
           properties:
+            id:
+              type: string
+              description: An identifier for a model.
             href:
               type: string
               format: uri-reference
@@ -342,7 +359,7 @@ components:
         data:
           name: NIEM
           source: NIEM Management Office
-          definition: National Information Exchange Model releases
+          summary: National Information Exchange Model releases
           description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
           website: 'https://niem.gov'
         links:
@@ -384,6 +401,11 @@ components:
             location:
               type: string
               description: A URL for the model package folder.
+            conformanceTargets:
+              type: array
+              description: One or more classes of artifact to which this artifact conforms.
+              items:
+                type: string
             more:
               type: object
               description: Any additional metadata to be captured.
@@ -403,6 +425,8 @@ components:
               type: string
               format: uri-reference
             zip:
+              $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
+            folder:
               $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
             model:
               type: object
