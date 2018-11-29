@@ -48,7 +48,7 @@
   *
   * @property {string} [id] - An identifier for a model.
   * @property {string} [href] - A URI for the target resource.
-  * @property {NIEMVersionLinks} [versions] - A data type for metadata about a singular resource related to the source resource.
+  * @property {NIEMRelatedResources} [versions] - A data type for metadata about potentially multiple resources related to the source resource.
   */
 
 

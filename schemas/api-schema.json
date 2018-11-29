@@ -45,7 +45,7 @@
           "description": "A url for this model"
         },
         "versions": {
-          "$ref": "#/definitions/RelatedResourceType"
+          "$ref": "#/definitions/RelatedResourcesType"
         }
       },
       "additionalProperties": false
