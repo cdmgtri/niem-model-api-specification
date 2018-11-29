@@ -2,7 +2,7 @@
   "name": "niem-model-api-specification",
   "version": "1.0.0",
   "description": "Mock API specification for the NIEM model structure",
-  "main": "index.js",
+  "main": "jsdocs/index.js",
   "scripts": {
     "build": "npm run convert && npm run deref && npm run test && npm run docs && echo \"'npm run jsdocs' must be run manually as needed because it requires updating the output by hand.\"",
     "docs": "redoc-cli bundle openapi.yaml && mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
