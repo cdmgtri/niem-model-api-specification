@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/api-schema.json",
-  "packageResponse": {
+  "versionResponse": {
     "data": {
       "version": "4.1",
       "baseNIEM": "4.1",
@@ -8,7 +8,7 @@
       "changeSummary": "See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes."
     },
     "links": {
-      "href": "/packages/niem-4.1",
+      "href": "/versions/niem-4.1",
       "zip": "https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip",
       "model": {
         "label": "NIEM",
@@ -16,19 +16,19 @@
       },
       "namespaces": {
         "count": 58,
-        "href": "/packages/niem-4.1/namespaces"
+        "href": "/versions/niem-4.1/namespaces"
       },
       "properties": {
         "count": 11351,
-        "href": "/packages/niem-4.1/properties"
+        "href": "/versions/niem-4.1/properties"
       },
       "types": {
         "count": 3942,
-        "href": "/packages/niem-4.1/types"
+        "href": "/versions/niem-4.1/types"
       },
       "codes": {
         "count": 75114,
-        "href": "/packages/niem-4.1/codes"
+        "href": "/versions/niem-4.1/codes"
       }
     }
   }

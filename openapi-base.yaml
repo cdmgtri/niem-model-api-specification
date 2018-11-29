@@ -12,7 +12,7 @@ info:
     - Endpoints will end with `.json`, corresponding to the hosted JSON files.
     - No server-side processing is available, so only full data files can be returned (no filtered or paginated results, no query strings on URLs).
 
-    The API currently supports a subset of fields for models and packages only.
+    The API currently supports a subset of fields for models and versions only.
 
     Note that this API is under development and is subject to drastic changes.
 
@@ -25,11 +25,12 @@ servers:
 
 tags:
   - name: models
-  - name: packages
+  - name: versions
   - name: namespaces
   - name: properties
   - name: types
   - name: codes
+  - name: packages
 
 paths:
 
@@ -48,7 +49,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/modelResponseType"
+                  $ref: "#/components/schemas/ModelResponseType"
               example:
                 value:
                   - $ref: ./examples/niem/modelResponse.json#/modelResponse
@@ -70,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/modelResponseType"
+                $ref: "#/components/schemas/ModelResponseType"
               examples:
                 NIEM:
                   value:
@@ -81,12 +82,12 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /models/{modelID}/packages.json:
+  /models/{modelID}/versions.json:
     get:
-      summary: Find packages
-      operationId: getPackages
+      summary: Find versions
+      operationId: getVersions
       tags:
-        - packages
+        - versions
       parameters:
         - $ref: "#/components/parameters/modelID"
       responses:
@@ -97,36 +98,36 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/packageResponseType"
+                  $ref: "#/components/schemas/VersionResponseType"
               example:
                 value:
-                  -  $ref: ./examples/iepd/packageResponse1.json#/packageResponse
-                  -  $ref: ./examples/iepd/packageResponse2.json#/packageResponse
+                  -  $ref: ./examples/iepd/versionResponse1.json#/versionResponse
+                  -  $ref: ./examples/iepd/versionResponse2.json#/versionResponse
         default:
           $ref: "#/components/responses/NotFound"
 
-  /packages/{packageID}.json:
+  /versions/{versionID}.json:
     get:
-      summary: Find package by ID
-      operationId: getPackageByID
+      summary: Find version by ID
+      operationId: getVersionByID
       tags:
-        - packages
+        - versions
       parameters:
-        - $ref: "#/components/parameters/packageID"
+        - $ref: "#/components/parameters/versionID"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/packageResponseType"
+                $ref: "#/components/schemas/VersionResponseType"
               examples:
                 NIEM:
                   value:
-                    $ref: examples/niem/packageResponse.json#/packageResponse
+                    $ref: examples/niem/versionResponse.json#/versionResponse
                 "Sample IEPD":
                   value:
-                    $ref: examples/iepd/packageResponse2.json#/packageResponse
+                    $ref: examples/iepd/versionResponse2.json#/versionResponse
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -134,13 +135,13 @@ components:
 
   schemas:
 
-    modelResponseType:
+    ModelResponseType:
       type: object
       $ref: ./schemas/api-schema.json#/definitions/ModelResponseType
 
-    packageResponseType:
+    VersionResponseType:
       type: object
-      $ref: ./schemas/api-schema.json#/definitions/PackageResponseType
+      $ref: ./schemas/api-schema.json#/definitions/VersionResponseType
 
     Error:
       type: object
@@ -162,11 +163,11 @@ components:
       schema:
         type: string
       example: hvpd-arrest-rpt
-    packageID:
-      name: packageID
+    versionID:
+      name: versionID
       in: path
       required: true
-      description: The id of the package to find.
+      description: The id of the version to find.
       schema:
         type: string
       example: hvpd-arrest-rpt-1.0

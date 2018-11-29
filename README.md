@@ -1,6 +1,8 @@
 
 # NIEM Model API
 
+[![Build Status](https://travis-ci.org/cdmgtri/niem-model-api-specification.svg?branch=dev)](https://travis-ci.org/cdmgtri/niem-model-api-specification)
+
 This project defines a mock static REST API to provide easy access to release and IEPD metadata and components.  This is to support the development of the future NIEM tool strategy and tool prototyping in a simple manner.
 
 Content will be provided in a separate GitHub project as JSON files using GitHub Pages.  This setup will look and behave similar to a regular REST API, with a few exceptions...

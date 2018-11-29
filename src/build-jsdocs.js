@@ -26,7 +26,7 @@ for( let key in schema.definitions ) {
   str = str.replace("@name", "@typedef {Object} " + name);
 
   // Update the JSDoc manually to use the correct type for related objects
-  str = str.replace("{array} [packages]", "{NIEMPackage[]} [packages]");
+  str = str.replace("{array} [versions]", "{NIEMVersion[]} [versions]");
 
   jsDocs += str + "\n\n";
 }

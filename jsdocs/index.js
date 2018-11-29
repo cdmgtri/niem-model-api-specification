@@ -13,21 +13,21 @@
   * @property {string} [source] - An authoritative source for the model.
   * @property {string} [contactInfo] - A set of contact information for the model.
   * @property {string} [website] - A URL for an informational website about this model.
-  * @property {NIEMPackage[]} [packages] - A set of packages that belong to this model.
+  * @property {NIEMVersion[]} [versions] - A set of versions that belong to this model.
   */
 
 
 /**
   * A data type for a specific version or release of a model.
-  * @typedef {Object} NIEMPackage
+  * @typedef {Object} NIEMVersion
   *
-  * @property {string} [modelName] - A name of the model to which this package belongs.
+  * @property {string} [modelName] - A name of the model to which this version belongs.
   * @property {string} [version] - A version number.
   * @property {string} [draft] - A sub-version number, such as a pre-release identifier.
   * @property {string} [baseNIEM] - A NIEM release that this resource is based on.
-  * @property {string} [uri] - A target namespace or other ID for this model package.
-  * @property {string} [changeSummary] - A summary of the changes from the previous package, if applicable.
-  * @property {string} [location] - A URL for the model package folder.
+  * @property {string} [uri] - A target namespace or other ID for this model version.
+  * @property {string} [changeSummary] - A summary of the changes from the previous version, if applicable.
+  * @property {string} [location] - A URL for the model version folder.
   * @property {array} [conformanceTargets] - One or more classes of artifact to which this artifact conforms.
   * @property {object} [more] - Any additional metadata to be captured.
   */
@@ -48,27 +48,27 @@
   *
   * @property {string} [id] - An identifier for a model.
   * @property {string} [href] - A URI for the target resource.
-  * @property {NIEMPackageLinks} [packages] - A data type for metadata about a singular resource related to the source resource.
+  * @property {NIEMVersionLinks} [versions] - A data type for metadata about a singular resource related to the source resource.
   */
 
 
 /**
   * Represents a undefined object
-  * @typedef {Object} NIEMPackageResponse
+  * @typedef {Object} NIEMVersionResponse
   *
   * @property {string} [$schema] -
-  * @property {NIEMPackage} [data] - A data type for a specific version or release of a model.
-  * @property {NIEMPackageLinks} [links] - A data type for metadata about package-related resources.
+  * @property {NIEMVersion} [data] - A data type for a specific version or release of a model.
+  * @property {NIEMVersionLinks} [links] - A data type for metadata about version-related resources.
   */
 
 
 /**
-  * A data type for metadata about package-related resources.
-  * @typedef {Object} NIEMPackageLinks
+  * A data type for metadata about version-related resources.
+  * @typedef {Object} NIEMVersionLinks
   *
   * @property {string} [href] - A URI for the target resource.
   * @property {string} [zip] - The location of the zip file for this project.
-  * @property {string} [folder] - The folder location for this package.
+  * @property {string} [folder] - The folder location for this version.
   * @property {NIEMRelatedResource} [model] - A data type for metadata about a singular resource related to the source resource.
   * @property {NIEMRelatedResources} [namespaces] - A data type for metadata about potentially multiple resources related to the source resource.
   * @property {NIEMRelatedResources} [properties] - A data type for metadata about potentially multiple resources related to the source resource.

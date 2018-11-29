@@ -10,7 +10,7 @@ info:
     - Endpoints will end with `.json`, corresponding to the hosted JSON files.
     - No server-side processing is available, so only full data files can be returned (no filtered or paginated results, no query strings on URLs).
 
-    The API currently supports a subset of fields for models and packages only.
+    The API currently supports a subset of fields for models and versions only.
 
     Note that this API is under development and is subject to drastic changes.
   version: '0.1'
@@ -20,11 +20,12 @@ servers:
   - url: 'https://cdmgtri.github.io/niem-model-api'
 tags:
   - name: models
-  - name: packages
+  - name: versions
   - name: namespaces
   - name: properties
   - name: types
   - name: codes
+  - name: packages
 paths:
   /models.json:
     get:
@@ -40,7 +41,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/modelResponseType'
+                  $ref: '#/components/schemas/ModelResponseType'
               example:
                 value:
                   - data:
@@ -51,9 +52,9 @@ paths:
                       website: 'https://niem.gov'
                     links:
                       href: /model/niem
-                      packages:
+                      versions:
                         count: 8
-                        href: /model/niem/packages
+                        href: /model/niem/versions
                   - data:
                       name: Hill Valley Arrest Report
                       source: Hill Valley Police Department
@@ -62,9 +63,9 @@ paths:
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
                     links:
                       href: /model/hvpd-arrest-rpt
-                      packages:
+                      versions:
                         count: 2
-                        href: /model/hvpd-arrest-rpt/packages
+                        href: /model/hvpd-arrest-rpt/versions
         default:
           $ref: '#/components/responses/NotFound'
   '/models/{modelID}.json':
@@ -81,7 +82,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/modelResponseType'
+                $ref: '#/components/schemas/ModelResponseType'
               examples:
                 NIEM:
                   value:
@@ -93,9 +94,9 @@ paths:
                       website: 'https://niem.gov'
                     links:
                       href: /model/niem
-                      packages:
+                      versions:
                         count: 8
-                        href: /model/niem/packages
+                        href: /model/niem/versions
                 Sample IEPD:
                   value:
                     data:
@@ -106,17 +107,17 @@ paths:
                       website: 'https://example.com/hvpd/specifications/arrest-report/docs'
                     links:
                       href: /model/hvpd-arrest-rpt
-                      packages:
+                      versions:
                         count: 2
-                        href: /model/hvpd-arrest-rpt/packages
+                        href: /model/hvpd-arrest-rpt/versions
         '404':
           $ref: '#/components/responses/NotFound'
-  '/models/{modelID}/packages.json':
+  '/models/{modelID}/versions.json':
     get:
-      summary: Find packages
-      operationId: getPackages
+      summary: Find versions
+      operationId: getVersions
       tags:
-        - packages
+        - versions
       parameters:
         - $ref: '#/components/parameters/modelID'
       responses:
@@ -127,7 +128,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/packageResponseType'
+                  $ref: '#/components/schemas/VersionResponseType'
               example:
                 value:
                   - data:
@@ -137,23 +138,23 @@ paths:
                       uri: 'https://example.com/hvpd/specifications/arrest-report/1.0'
                       changeSummary: Initial IEPD
                     links:
-                      href: /packages/hvpd-arrest-rpt-1.0
+                      href: /versions/hvpd-arrest-rpt-1.0
                       zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-1.0.zip'
                       model:
                         label: Hill Valley Arrest Report
                         href: /models/hvpd-arrest-rpt
                       namespaces:
                         count: 3
-                        href: /packages/hvpd-arrest-rpt-1.0/namespaces
+                        href: /versions/hvpd-arrest-rpt-1.0/namespaces
                       properties:
                         count: 25
-                        href: /packages/hvpd-arrest-rpt-1.0/properties
+                        href: /versions/hvpd-arrest-rpt-1.0/properties
                       types:
                         count: 14
-                        href: /packages/hvpd-arrest-rpt-1.0/types
+                        href: /versions/hvpd-arrest-rpt-1.0/types
                       codes:
                         count: 205
-                        href: /packages/hvpd-arrest-rpt-1.0/codes
+                        href: /versions/hvpd-arrest-rpt-1.0/codes
                   - data:
                       version: '2.0'
                       baseNIEM: '2.0'
@@ -161,40 +162,40 @@ paths:
                       uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
                       changeSummary: Version 2.0 adds five additional fields to capture information about ...
                     links:
-                      href: /packages/hvpd-arrest-rpt-2.0
+                      href: /versions/hvpd-arrest-rpt-2.0
                       zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
                       model:
                         label: Hill Valley Arrest Report
                         href: /models/hvpd-arrest-rpt
                       namespaces:
                         count: 3
-                        href: /packages/hvpd-arrest-rpt-2.0/namespaces
+                        href: /versions/hvpd-arrest-rpt-2.0/namespaces
                       properties:
                         count: 30
-                        href: /packages/hvpd-arrest-rpt-2.0/properties
+                        href: /versions/hvpd-arrest-rpt-2.0/properties
                       types:
                         count: 18
-                        href: /packages/hvpd-arrest-rpt-2.0/types
+                        href: /versions/hvpd-arrest-rpt-2.0/types
                       codes:
                         count: 320
-                        href: /packages/hvpd-arrest-rpt-2.0/codes
+                        href: /versions/hvpd-arrest-rpt-2.0/codes
         default:
           $ref: '#/components/responses/NotFound'
-  '/packages/{packageID}.json':
+  '/versions/{versionID}.json':
     get:
-      summary: Find package by ID
-      operationId: getPackageByID
+      summary: Find version by ID
+      operationId: getVersionByID
       tags:
-        - packages
+        - versions
       parameters:
-        - $ref: '#/components/parameters/packageID'
+        - $ref: '#/components/parameters/versionID'
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/packageResponseType'
+                $ref: '#/components/schemas/VersionResponseType'
               examples:
                 NIEM:
                   value:
@@ -204,23 +205,23 @@ paths:
                       location: 'https://github.com/NIEM/NIEM-Releases/tree/niem-4.1'
                       changeSummary: 'See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes.'
                     links:
-                      href: /packages/niem-4.1
+                      href: /versions/niem-4.1
                       zip: 'https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip'
                       model:
                         label: NIEM
                         href: /models/niem
                       namespaces:
                         count: 58
-                        href: /packages/niem-4.1/namespaces
+                        href: /versions/niem-4.1/namespaces
                       properties:
                         count: 11351
-                        href: /packages/niem-4.1/properties
+                        href: /versions/niem-4.1/properties
                       types:
                         count: 3942
-                        href: /packages/niem-4.1/types
+                        href: /versions/niem-4.1/types
                       codes:
                         count: 75114
-                        href: /packages/niem-4.1/codes
+                        href: /versions/niem-4.1/codes
                 Sample IEPD:
                   value:
                     data:
@@ -230,28 +231,28 @@ paths:
                       uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
                       changeSummary: Version 2.0 adds five additional fields to capture information about ...
                     links:
-                      href: /packages/hvpd-arrest-rpt-2.0
+                      href: /versions/hvpd-arrest-rpt-2.0
                       zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
                       model:
                         label: Hill Valley Arrest Report
                         href: /models/hvpd-arrest-rpt
                       namespaces:
                         count: 3
-                        href: /packages/hvpd-arrest-rpt-2.0/namespaces
+                        href: /versions/hvpd-arrest-rpt-2.0/namespaces
                       properties:
                         count: 30
-                        href: /packages/hvpd-arrest-rpt-2.0/properties
+                        href: /versions/hvpd-arrest-rpt-2.0/properties
                       types:
                         count: 18
-                        href: /packages/hvpd-arrest-rpt-2.0/types
+                        href: /versions/hvpd-arrest-rpt-2.0/types
                       codes:
                         count: 320
-                        href: /packages/hvpd-arrest-rpt-2.0/codes
+                        href: /versions/hvpd-arrest-rpt-2.0/codes
         '404':
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    modelResponseType:
+    ModelResponseType:
       type: object
       description: Represents a NIEM Model API model response.
       properties:
@@ -288,16 +289,16 @@ components:
             website:
               type: string
               description: A URL for an informational website about this model.
-            packages:
+            versions:
               type: array
-              description: A set of packages that belong to this model.
+              description: A set of versions that belong to this model.
               items:
                 type: object
-                description: A data type for a specific version or release of a model.
+                description: A data type for a specific set of versioned namespaces of a model.
                 properties:
                   modelName:
                     type: string
-                    description: A name of the model to which this package belongs.
+                    description: A name of the model to which this version belongs.
                   version:
                     type: string
                     description: A version number.
@@ -311,13 +312,13 @@ components:
                     example: '4.0'
                   uri:
                     type: string
-                    description: A target namespace or other ID for this model package.
+                    description: A target namespace or other ID for this model version.
                   changeSummary:
                     type: string
-                    description: 'A summary of the changes from the previous package, if applicable.'
+                    description: 'A summary of the changes from the previous version, if applicable.'
                   location:
                     type: string
-                    description: A URL for the model package folder.
+                    description: A URL for the model version folder.
                   conformanceTargets:
                     type: array
                     description: One or more classes of artifact to which this artifact conforms.
@@ -345,7 +346,7 @@ components:
             href:
               type: string
               format: uri-reference
-            packages:
+            versions:
               type: object
               description: A data type for metadata about a singular resource related to the source resource.
               properties:
@@ -353,7 +354,7 @@ components:
                   type: string
                   description: 'A relative label for a resource, such as a version number or a qualified name.'
                 href:
-                  $ref: '#/components/schemas/modelResponseType/properties/links/properties/href'
+                  $ref: '#/components/schemas/ModelResponseType/properties/links/properties/href'
           additionalProperties: false
       example:
         data:
@@ -364,23 +365,23 @@ components:
           website: 'https://niem.gov'
         links:
           href: /model/niem
-          packages:
+          versions:
             count: 8
-            href: /model/niem/packages
+            href: /model/niem/versions
       additionalProperties: false
-    packageResponseType:
+    VersionResponseType:
       type: object
-      description: Represents a NIEM Model API package response.
+      description: Represents a NIEM Model API version response.
       properties:
         $schema:
           type: string
         data:
           type: object
-          description: A data type for a specific version or release of a model.
+          description: A data type for a specific set of versioned namespaces of a model.
           properties:
             modelName:
               type: string
-              description: A name of the model to which this package belongs.
+              description: A name of the model to which this version belongs.
             version:
               type: string
               description: A version number.
@@ -394,13 +395,13 @@ components:
               example: '4.0'
             uri:
               type: string
-              description: A target namespace or other ID for this model package.
+              description: A target namespace or other ID for this model version.
             changeSummary:
               type: string
-              description: 'A summary of the changes from the previous package, if applicable.'
+              description: 'A summary of the changes from the previous version, if applicable.'
             location:
               type: string
-              description: A URL for the model package folder.
+              description: A URL for the model version folder.
             conformanceTargets:
               type: array
               description: One or more classes of artifact to which this artifact conforms.
@@ -419,15 +420,15 @@ components:
           additionalProperties: false
         links:
           type: object
-          description: A data type for metadata about package-related resources.
+          description: A data type for metadata about version-related resources.
           properties:
             href:
               type: string
               format: uri-reference
             zip:
-              $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
+              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
             folder:
-              $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
+              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
             model:
               type: object
               description: A data type for metadata about a singular resource related to the source resource.
@@ -436,7 +437,7 @@ components:
                   type: string
                   description: 'A relative label for a resource, such as a version number or a qualified name.'
                 href:
-                  $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
+                  $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
             namespaces:
               type: object
               description: A data type for metadata about potentially multiple resources related to the source resource.
@@ -444,13 +445,13 @@ components:
                 count:
                   type: integer
                 href:
-                  $ref: '#/components/schemas/packageResponseType/properties/links/properties/href'
+                  $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
             properties:
-              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
+              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
             types:
-              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
+              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
             codes:
-              $ref: '#/components/schemas/packageResponseType/properties/links/properties/namespaces'
+              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
           additionalProperties: false
       example:
         data:
@@ -460,23 +461,23 @@ components:
           uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
           changeSummary: Version 2.0 adds five additional fields to capture information about ...
         links:
-          href: /packages/hvpd-arrest-rpt-2.0
+          href: /versions/hvpd-arrest-rpt-2.0
           zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
           model:
             label: Hill Valley Arrest Report
             href: /models/hvpd-arrest-rpt
           namespaces:
             count: 3
-            href: /packages/hvpd-arrest-rpt-2.0/namespaces
+            href: /versions/hvpd-arrest-rpt-2.0/namespaces
           properties:
             count: 30
-            href: /packages/hvpd-arrest-rpt-2.0/properties
+            href: /versions/hvpd-arrest-rpt-2.0/properties
           types:
             count: 18
-            href: /packages/hvpd-arrest-rpt-2.0/types
+            href: /versions/hvpd-arrest-rpt-2.0/types
           codes:
             count: 320
-            href: /packages/hvpd-arrest-rpt-2.0/codes
+            href: /versions/hvpd-arrest-rpt-2.0/codes
       additionalProperties: false
     Error:
       type: object
@@ -497,11 +498,11 @@ components:
       schema:
         type: string
       example: hvpd-arrest-rpt
-    packageID:
-      name: packageID
+    versionID:
+      name: versionID
       in: path
       required: true
-      description: The id of the package to find.
+      description: The id of the version to find.
       schema:
         type: string
       example: hvpd-arrest-rpt-1.0

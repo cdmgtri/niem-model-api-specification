@@ -11,8 +11,8 @@ properties:
   modelResponse:
     $ref: "#/definitions/ModelResponseType"
 
-  packageResponse:
-    $ref: "#/definitions/PackageResponseType"
+  versionResponse:
+    $ref: "#/definitions/VersionResponseType"
 
 definitions:
 
@@ -40,36 +40,36 @@ definitions:
       href:
         $ref: "#/definitions/hrefType"
         description: A url for this model
-      packages:
+      versions:
         $ref: "#/definitions/RelatedResourceType"
     additionalProperties: false
 
-  PackageResponseType:
+  VersionResponseType:
     type: object
-    description: Represents a NIEM Model API package response.
+    description: Represents a NIEM Model API version response.
     properties:
       $schema:
         $ref: "#/properties/$schema"
       data:
-        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/PackageType
+        $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/VersionType
       links:
-        $ref: "#/definitions/PackageLinksType"
+        $ref: "#/definitions/VersionLinksType"
     example:
-      $ref: ../examples/iepd/packageResponse2.json#/packageResponse
+      $ref: ../examples/iepd/versionResponse2.json#/versionResponse
     additionalProperties: false
 
-  PackageLinksType:
+  VersionLinksType:
     type: object
-    description: A data type for metadata about package-related resources.
+    description: A data type for metadata about version-related resources.
     properties:
       href:
         $ref: "#/definitions/hrefType"
       zip:
         $ref: "#/definitions/hrefType"
-        description: The location of the zip file for this package.
+        description: The location of the zip file for this version.
       folder:
         $ref: "#/definitions/hrefType"
-        description: The folder location for this package.
+        description: The folder location for this version.
       model:
         $ref: "#/definitions/RelatedResourceType"
       namespaces:

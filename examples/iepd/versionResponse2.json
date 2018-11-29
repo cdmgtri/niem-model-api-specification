@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/api-schema.json",
-  "packageResponse": {
+  "versionResponse": {
     "data": {
       "version": "2.0",
       "baseNIEM": "2.0",
@@ -9,7 +9,7 @@
       "changeSummary": "Version 2.0 adds five additional fields to capture information about ..."
     },
     "links": {
-      "href": "/packages/hvpd-arrest-rpt-2.0",
+      "href": "/versions/hvpd-arrest-rpt-2.0",
       "zip": "https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip",
       "model": {
         "label": "Hill Valley Arrest Report",
@@ -17,19 +17,19 @@
       },
       "namespaces": {
         "count": 3,
-        "href": "/packages/hvpd-arrest-rpt-2.0/namespaces"
+        "href": "/versions/hvpd-arrest-rpt-2.0/namespaces"
       },
       "properties": {
         "count": 30,
-        "href": "/packages/hvpd-arrest-rpt-2.0/properties"
+        "href": "/versions/hvpd-arrest-rpt-2.0/properties"
       },
       "types": {
         "count": 18,
-        "href": "/packages/hvpd-arrest-rpt-2.0/types"
+        "href": "/versions/hvpd-arrest-rpt-2.0/types"
       },
       "codes": {
         "count": 320,
-        "href": "/packages/hvpd-arrest-rpt-2.0/codes"
+        "href": "/versions/hvpd-arrest-rpt-2.0/codes"
       }
     }
   }

@@ -10,9 +10,9 @@
     },
     "links": {
       "href": "/model/niem",
-      "packages": {
+      "versions": {
         "count": 8,
-        "href": "/model/niem/packages"
+        "href": "/model/niem/versions"
       }
     }
   }
