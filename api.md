@@ -51,6 +51,7 @@ versionID = modelID-versionNumber(-draft)?
 
 | Endpoints | Description |
 | --------- | ----------- |
+| **/versions** | Get metadata about all versions.
 | ~~/versions?model=niem~~ <br> **/models/:model/versions** <br> `/models/niem/versions` <br> `/models/hvpd-arrest-rpt/versions` | Get metadata about all versions in a model. <br> Workaround for unavailable query string. |
 | **/versions/:version** <br> `/versions/niem-2.0` <br> `/versions/niem-4.2-alpha1` <br> `/versions/hvpd-arrest-rpt-2.0` | Get a version. |
 

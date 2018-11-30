@@ -34,7 +34,6 @@ tags:
 
 paths:
 
-
   /models.json:
     get:
       summary: Find models
@@ -82,10 +81,34 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
-  /models/{modelID}/versions.json:
+
+  /versions.json:
     get:
       summary: Find versions
       operationId: getVersions
+      tags:
+        - versions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/VersionResponseType"
+              example:
+                value:
+                  - $ref: ./examples/niem/versionResponse.json#/versionResponse
+                  - $ref: ./examples/iepd/versionResponse1.json#/versionResponse
+                  - $ref: ./examples/iepd/versionResponse2.json#/versionResponse
+        default:
+          $ref: "#/components/responses/NotFound"
+
+  /models/{modelID}/versions.json:
+    get:
+      summary: Find versions of a model
+      operationId: getModelVersions
       tags:
         - versions
       parameters:
