@@ -1,107 +1,32 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "api-schema.json",
+  "$id": "api-base-schema.json",
   "properties": {
     "$schema": {
       "type": "string"
     },
-    "modelResponse": {
-      "$ref": "#/definitions/ModelResponseType"
+    "data": {
+      "oneOf": [
+        {
+          "$ref": "api-model-schema.json#/properties/data"
+        },
+        {
+          "$ref": "api-version-schema.json#/properties/data"
+        }
+      ]
     },
-    "versionResponse": {
-      "$ref": "#/definitions/VersionResponseType"
+    "links": {
+      "oneOf": [
+        {
+          "$ref": "api-model-schema.json#/properties/links"
+        },
+        {
+          "$ref": "api-version-schema.json#/properties/links"
+        }
+      ]
     }
   },
   "definitions": {
-    "ModelResponseType": {
-      "type": "object",
-      "description": "Represents a NIEM Model API model response.",
-      "properties": {
-        "$schema": {
-          "type": "string"
-        },
-        "data": {
-          "$ref": "../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/ModelType"
-        },
-        "links": {
-          "$ref": "#/definitions/ModelLinksType"
-        }
-      },
-      "example": {
-        "$ref": "../examples/niem/modelResponse.json#/modelResponse"
-      },
-      "additionalProperties": false
-    },
-    "ModelLinksType": {
-      "type": "object",
-      "description": "A data type for metadata about model-related resources.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "An identifier for a model."
-        },
-        "href": {
-          "$ref": "#/definitions/hrefType",
-          "description": "A url for this model"
-        },
-        "versions": {
-          "$ref": "#/definitions/RelatedResourcesType"
-        }
-      },
-      "additionalProperties": false
-    },
-    "VersionResponseType": {
-      "type": "object",
-      "description": "Represents a NIEM Model API version response.",
-      "properties": {
-        "$schema": {
-          "$ref": "#/properties/$schema"
-        },
-        "data": {
-          "$ref": "../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/VersionType"
-        },
-        "links": {
-          "$ref": "#/definitions/VersionLinksType"
-        }
-      },
-      "example": {
-        "$ref": "../examples/iepd/versionResponse2.json#/versionResponse"
-      },
-      "additionalProperties": false
-    },
-    "VersionLinksType": {
-      "type": "object",
-      "description": "A data type for metadata about version-related resources.",
-      "properties": {
-        "href": {
-          "$ref": "#/definitions/hrefType"
-        },
-        "zip": {
-          "$ref": "#/definitions/hrefType",
-          "description": "The location of the zip file for this version."
-        },
-        "folder": {
-          "$ref": "#/definitions/hrefType",
-          "description": "The folder location for this version."
-        },
-        "model": {
-          "$ref": "#/definitions/RelatedResourceType"
-        },
-        "namespaces": {
-          "$ref": "#/definitions/RelatedResourcesType"
-        },
-        "properties": {
-          "$ref": "#/definitions/RelatedResourcesType"
-        },
-        "types": {
-          "$ref": "#/definitions/RelatedResourcesType"
-        },
-        "codes": {
-          "$ref": "#/definitions/RelatedResourcesType"
-        }
-      },
-      "additionalProperties": false
-    },
     "RelatedResourceType": {
       "type": "object",
       "description": "A data type for metadata about a singular resource related to the source resource.",

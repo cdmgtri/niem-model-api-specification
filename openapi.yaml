@@ -43,29 +43,28 @@ paths:
                 items:
                   $ref: '#/components/schemas/ModelResponseType'
               example:
-                value:
-                  - data:
-                      name: NIEM
-                      source: NIEM Management Office
-                      summary: National Information Exchange Model releases
-                      description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
-                      website: 'https://niem.gov'
-                    links:
-                      href: /model/niem
-                      versions:
-                        count: 8
-                        href: /model/niem/versions
-                  - data:
-                      name: Hill Valley Arrest Report
-                      source: Hill Valley Police Department
-                      summary: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
-                      description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
-                      website: 'https://example.com/hvpd/specifications/arrest-report/docs'
-                    links:
-                      href: /model/hvpd-arrest-rpt
-                      versions:
-                        count: 2
-                        href: /model/hvpd-arrest-rpt/versions
+                - data:
+                    name: NIEM
+                    source: NIEM Management Office
+                    summary: National Information Exchange Model releases
+                    description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
+                    website: 'https://niem.gov'
+                  links:
+                    href: /model/niem
+                    versions:
+                      count: 8
+                      href: /model/niem/versions
+                - data:
+                    name: Hill Valley Arrest Report
+                    source: Hill Valley Police Department
+                    summary: The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.
+                    description: The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...
+                    website: 'https://example.com/hvpd/specifications/arrest-report/docs'
+                  links:
+                    href: /model/hvpd-arrest-rpt
+                    versions:
+                      count: 2
+                      href: /model/hvpd-arrest-rpt/versions
         default:
           $ref: '#/components/responses/NotFound'
   '/models/{modelID}.json':
@@ -128,78 +127,77 @@ paths:
                 items:
                   $ref: '#/components/schemas/VersionResponseType'
               example:
-                value:
-                  - data:
-                      version: '4.1'
-                      baseNIEM: '4.1'
-                      location: 'https://github.com/NIEM/NIEM-Releases/tree/niem-4.1'
-                      changeSummary: 'See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes.'
-                    links:
-                      href: /versions/niem-4.1
-                      zip: 'https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip'
-                      model:
-                        label: NIEM
-                        href: /models/niem
-                      namespaces:
-                        count: 58
-                        href: /versions/niem-4.1/namespaces
-                      properties:
-                        count: 11351
-                        href: /versions/niem-4.1/properties
-                      types:
-                        count: 3942
-                        href: /versions/niem-4.1/types
-                      codes:
-                        count: 75114
-                        href: /versions/niem-4.1/codes
-                  - data:
-                      version: '1.0'
-                      baseNIEM: '2.0'
-                      location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-1.0'
-                      uri: 'https://example.com/hvpd/specifications/arrest-report/1.0'
-                      changeSummary: Initial IEPD
-                    links:
-                      href: /versions/hvpd-arrest-rpt-1.0
-                      zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-1.0.zip'
-                      model:
-                        label: Hill Valley Arrest Report
-                        href: /models/hvpd-arrest-rpt
-                      namespaces:
-                        count: 3
-                        href: /versions/hvpd-arrest-rpt-1.0/namespaces
-                      properties:
-                        count: 25
-                        href: /versions/hvpd-arrest-rpt-1.0/properties
-                      types:
-                        count: 14
-                        href: /versions/hvpd-arrest-rpt-1.0/types
-                      codes:
-                        count: 205
-                        href: /versions/hvpd-arrest-rpt-1.0/codes
-                  - data:
-                      version: '2.0'
-                      baseNIEM: '2.0'
-                      location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-2.0'
-                      uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
-                      changeSummary: Version 2.0 adds five additional fields to capture information about ...
-                    links:
-                      href: /versions/hvpd-arrest-rpt-2.0
-                      zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
-                      model:
-                        label: Hill Valley Arrest Report
-                        href: /models/hvpd-arrest-rpt
-                      namespaces:
-                        count: 3
-                        href: /versions/hvpd-arrest-rpt-2.0/namespaces
-                      properties:
-                        count: 30
-                        href: /versions/hvpd-arrest-rpt-2.0/properties
-                      types:
-                        count: 18
-                        href: /versions/hvpd-arrest-rpt-2.0/types
-                      codes:
-                        count: 320
-                        href: /versions/hvpd-arrest-rpt-2.0/codes
+                - data:
+                    version: '4.1'
+                    baseNIEM: '4.1'
+                    location: 'https://github.com/NIEM/NIEM-Releases/tree/niem-4.1'
+                    changeSummary: 'See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes.'
+                  links:
+                    href: /versions/niem-4.1
+                    zip: 'https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip'
+                    model:
+                      label: NIEM
+                      href: /models/niem
+                    namespaces:
+                      count: 58
+                      href: /versions/niem-4.1/namespaces
+                    properties:
+                      count: 11351
+                      href: /versions/niem-4.1/properties
+                    types:
+                      count: 3942
+                      href: /versions/niem-4.1/types
+                    codes:
+                      count: 75114
+                      href: /versions/niem-4.1/codes
+                - data:
+                    version: '1.0'
+                    baseNIEM: '2.0'
+                    location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-1.0'
+                    uri: 'https://example.com/hvpd/specifications/arrest-report/1.0'
+                    changeSummary: Initial IEPD
+                  links:
+                    href: /versions/hvpd-arrest-rpt-1.0
+                    zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-1.0.zip'
+                    model:
+                      label: Hill Valley Arrest Report
+                      href: /models/hvpd-arrest-rpt
+                    namespaces:
+                      count: 3
+                      href: /versions/hvpd-arrest-rpt-1.0/namespaces
+                    properties:
+                      count: 25
+                      href: /versions/hvpd-arrest-rpt-1.0/properties
+                    types:
+                      count: 14
+                      href: /versions/hvpd-arrest-rpt-1.0/types
+                    codes:
+                      count: 205
+                      href: /versions/hvpd-arrest-rpt-1.0/codes
+                - data:
+                    version: '2.0'
+                    baseNIEM: '2.0'
+                    location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-2.0'
+                    uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
+                    changeSummary: Version 2.0 adds five additional fields to capture information about ...
+                  links:
+                    href: /versions/hvpd-arrest-rpt-2.0
+                    zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
+                    model:
+                      label: Hill Valley Arrest Report
+                      href: /models/hvpd-arrest-rpt
+                    namespaces:
+                      count: 3
+                      href: /versions/hvpd-arrest-rpt-2.0/namespaces
+                    properties:
+                      count: 30
+                      href: /versions/hvpd-arrest-rpt-2.0/properties
+                    types:
+                      count: 18
+                      href: /versions/hvpd-arrest-rpt-2.0/types
+                    codes:
+                      count: 320
+                      href: /versions/hvpd-arrest-rpt-2.0/codes
         default:
           $ref: '#/components/responses/NotFound'
   '/models/{modelID}/versions.json':
@@ -220,11 +218,54 @@ paths:
                 items:
                   $ref: '#/components/schemas/VersionResponseType'
               example:
-                value:
-                  - $ref: '#/paths/~1versions.json/get/responses/200/content/application~1json/example/value/1'
-                    x-miro: './examples/iepd/versionResponse1.json#/versionResponse'
-                  - $ref: '#/paths/~1versions.json/get/responses/200/content/application~1json/example/value/2'
-                    x-miro: './examples/iepd/versionResponse2.json#/versionResponse'
+                - data:
+                    version: '1.0'
+                    baseNIEM: '2.0'
+                    location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-1.0'
+                    uri: 'https://example.com/hvpd/specifications/arrest-report/1.0'
+                    changeSummary: Initial IEPD
+                  links:
+                    href: /versions/hvpd-arrest-rpt-1.0
+                    zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-1.0.zip'
+                    model:
+                      label: Hill Valley Arrest Report
+                      href: /models/hvpd-arrest-rpt
+                    namespaces:
+                      count: 3
+                      href: /versions/hvpd-arrest-rpt-1.0/namespaces
+                    properties:
+                      count: 25
+                      href: /versions/hvpd-arrest-rpt-1.0/properties
+                    types:
+                      count: 14
+                      href: /versions/hvpd-arrest-rpt-1.0/types
+                    codes:
+                      count: 205
+                      href: /versions/hvpd-arrest-rpt-1.0/codes
+                - data:
+                    version: '2.0'
+                    baseNIEM: '2.0'
+                    location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-2.0'
+                    uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
+                    changeSummary: Version 2.0 adds five additional fields to capture information about ...
+                  links:
+                    href: /versions/hvpd-arrest-rpt-2.0
+                    zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
+                    model:
+                      label: Hill Valley Arrest Report
+                      href: /models/hvpd-arrest-rpt
+                    namespaces:
+                      count: 3
+                      href: /versions/hvpd-arrest-rpt-2.0/namespaces
+                    properties:
+                      count: 30
+                      href: /versions/hvpd-arrest-rpt-2.0/properties
+                    types:
+                      count: 18
+                      href: /versions/hvpd-arrest-rpt-2.0/types
+                    codes:
+                      count: 320
+                      href: /versions/hvpd-arrest-rpt-2.0/codes
         default:
           $ref: '#/components/responses/NotFound'
   '/versions/{versionID}.json':
@@ -242,65 +283,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VersionResponseType'
-              examples:
-                NIEM:
-                  value:
-                    data:
-                      version: '4.1'
-                      baseNIEM: '4.1'
-                      location: 'https://github.com/NIEM/NIEM-Releases/tree/niem-4.1'
-                      changeSummary: 'See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes.'
-                    links:
-                      href: /versions/niem-4.1
-                      zip: 'https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip'
-                      model:
-                        label: NIEM
-                        href: /models/niem
-                      namespaces:
-                        count: 58
-                        href: /versions/niem-4.1/namespaces
-                      properties:
-                        count: 11351
-                        href: /versions/niem-4.1/properties
-                      types:
-                        count: 3942
-                        href: /versions/niem-4.1/types
-                      codes:
-                        count: 75114
-                        href: /versions/niem-4.1/codes
-                Sample IEPD:
-                  value:
-                    data:
-                      version: '2.0'
-                      baseNIEM: '2.0'
-                      location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-2.0'
-                      uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
-                      changeSummary: Version 2.0 adds five additional fields to capture information about ...
-                    links:
-                      href: /versions/hvpd-arrest-rpt-2.0
-                      zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
-                      model:
-                        label: Hill Valley Arrest Report
-                        href: /models/hvpd-arrest-rpt
-                      namespaces:
-                        count: 3
-                        href: /versions/hvpd-arrest-rpt-2.0/namespaces
-                      properties:
-                        count: 30
-                        href: /versions/hvpd-arrest-rpt-2.0/properties
-                      types:
-                        count: 18
-                        href: /versions/hvpd-arrest-rpt-2.0/types
-                      codes:
-                        count: 320
-                        href: /versions/hvpd-arrest-rpt-2.0/codes
+              example:
+                data:
+                  version: '4.1'
+                  baseNIEM: '4.1'
+                  location: 'https://github.com/NIEM/NIEM-Releases/tree/niem-4.1'
+                  changeSummary: 'See https://github.com/NIEM/NIEM-Releases/blob/niem-4.1/README.md for release notes.'
+                links:
+                  href: /versions/niem-4.1
+                  zip: 'https://github.com/niem/niem-model-api/blob/master/zips/niem-4.1.zip'
+                  model:
+                    label: NIEM
+                    href: /models/niem
+                  namespaces:
+                    count: 58
+                    href: /versions/niem-4.1/namespaces
+                  properties:
+                    count: 11351
+                    href: /versions/niem-4.1/properties
+                  types:
+                    count: 3942
+                    href: /versions/niem-4.1/types
+                  codes:
+                    count: 75114
+                    href: /versions/niem-4.1/codes
         '404':
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
     ModelResponseType:
       type: object
-      description: Represents a NIEM Model API model response.
       properties:
         $schema:
           type: string
@@ -390,6 +402,8 @@ components:
               type: string
               description: An identifier for a model.
             href:
+              description: A url for this model
+              example: '/resource/:resourceID'
               type: string
               format: uri-reference
             versions:
@@ -399,24 +413,13 @@ components:
                 count:
                   type: integer
                 href:
-                  $ref: '#/components/schemas/ModelResponseType/properties/links/properties/href'
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
           additionalProperties: false
-      example:
-        data:
-          name: NIEM
-          source: NIEM Management Office
-          summary: National Information Exchange Model releases
-          description: 'NIEM is a common vocabulary that enables efficient information exchange across diverse public and private organizations. NIEM can save time and money by providing consistent, reusable data terms and definitions, and repeatable processes.'
-          website: 'https://niem.gov'
-        links:
-          href: /model/niem
-          versions:
-            count: 8
-            href: /model/niem/versions
-      additionalProperties: false
     VersionResponseType:
       type: object
-      description: Represents a NIEM Model API version response.
       properties:
         $schema:
           type: string
@@ -468,12 +471,20 @@ components:
           description: A data type for metadata about version-related resources.
           properties:
             href:
+              description: A URI for the target resource.
+              example: '/resource/:resourceID'
               type: string
               format: uri-reference
             zip:
-              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
+              description: The location of the zip file for this version.
+              example: '/resource/:resourceID'
+              type: string
+              format: uri-reference
             folder:
-              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
+              description: The folder location for this version.
+              example: '/resource/:resourceID'
+              type: string
+              format: uri-reference
             model:
               type: object
               description: A data type for metadata about a singular resource related to the source resource.
@@ -482,7 +493,10 @@ components:
                   type: string
                   description: 'A relative label for a resource, such as a version number or a qualified name.'
                 href:
-                  $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
             namespaces:
               type: object
               description: A data type for metadata about potentially multiple resources related to the source resource.
@@ -490,40 +504,44 @@ components:
                 count:
                   type: integer
                 href:
-                  $ref: '#/components/schemas/VersionResponseType/properties/links/properties/href'
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
             properties:
-              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
+              type: object
+              description: A data type for metadata about potentially multiple resources related to the source resource.
+              properties:
+                count:
+                  type: integer
+                href:
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
             types:
-              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
+              type: object
+              description: A data type for metadata about potentially multiple resources related to the source resource.
+              properties:
+                count:
+                  type: integer
+                href:
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
             codes:
-              $ref: '#/components/schemas/VersionResponseType/properties/links/properties/namespaces'
+              type: object
+              description: A data type for metadata about potentially multiple resources related to the source resource.
+              properties:
+                count:
+                  type: integer
+                href:
+                  description: A URI for the target resource.
+                  example: '/resource/:resourceID'
+                  type: string
+                  format: uri-reference
           additionalProperties: false
-      example:
-        data:
-          version: '2.0'
-          baseNIEM: '2.0'
-          location: 'https://github.com/niem/niem-model-api/tree/master/repo/hvpd-arrest-rpt-2.0'
-          uri: 'https://example.com/hvpd/specifications/arrest-report/2.0'
-          changeSummary: Version 2.0 adds five additional fields to capture information about ...
-        links:
-          href: /versions/hvpd-arrest-rpt-2.0
-          zip: 'https://github.com/niem/niem-model-api/blob/master/zips/hvpd-arrest-rpt-2.0.zip'
-          model:
-            label: Hill Valley Arrest Report
-            href: /models/hvpd-arrest-rpt
-          namespaces:
-            count: 3
-            href: /versions/hvpd-arrest-rpt-2.0/namespaces
-          properties:
-            count: 30
-            href: /versions/hvpd-arrest-rpt-2.0/properties
-          types:
-            count: 18
-            href: /versions/hvpd-arrest-rpt-2.0/types
-          codes:
-            count: 320
-            href: /versions/hvpd-arrest-rpt-2.0/codes
-      additionalProperties: false
     Error:
       type: object
       properties:

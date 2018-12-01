@@ -50,9 +50,8 @@ paths:
                 items:
                   $ref: "#/components/schemas/ModelResponseType"
               example:
-                value:
-                  - $ref: ./examples/niem/modelResponse.json#/modelResponse
-                  - $ref: ./examples/iepd/modelResponse.json#/modelResponse
+                - $ref: ./examples/niem/modelResponse.json
+                - $ref: ./examples/iepd/modelResponse.json
         default:
           $ref: "#/components/responses/NotFound"
 
@@ -74,10 +73,10 @@ paths:
               examples:
                 NIEM:
                   value:
-                    $ref: examples/niem/modelResponse.json#/modelResponse
+                    $ref: examples/niem/modelResponse.json
                 "Sample IEPD":
                   value:
-                    $ref: examples/iepd/modelResponse.json#/modelResponse
+                    $ref: examples/iepd/modelResponse.json
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -98,10 +97,9 @@ paths:
                 items:
                   $ref: "#/components/schemas/VersionResponseType"
               example:
-                value:
-                  - $ref: ./examples/niem/versionResponse.json#/versionResponse
-                  - $ref: ./examples/iepd/versionResponse1.json#/versionResponse
-                  - $ref: ./examples/iepd/versionResponse2.json#/versionResponse
+                - $ref: ./examples/niem/versionResponse.json
+                - $ref: ./examples/iepd/versionResponse1.json
+                - $ref: ./examples/iepd/versionResponse2.json
         default:
           $ref: "#/components/responses/NotFound"
 
@@ -123,9 +121,8 @@ paths:
                 items:
                   $ref: "#/components/schemas/VersionResponseType"
               example:
-                value:
-                  -  $ref: ./examples/iepd/versionResponse1.json#/versionResponse
-                  -  $ref: ./examples/iepd/versionResponse2.json#/versionResponse
+                -  $ref: examples/iepd/versionResponse1.json
+                -  $ref: examples/iepd/versionResponse2.json
         default:
           $ref: "#/components/responses/NotFound"
 
@@ -144,13 +141,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/VersionResponseType"
-              examples:
-                NIEM:
-                  value:
-                    $ref: examples/niem/versionResponse.json#/versionResponse
-                "Sample IEPD":
-                  value:
-                    $ref: examples/iepd/versionResponse2.json#/versionResponse
+              example:
+                $ref: examples/niem/versionResponse.json
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -160,11 +152,11 @@ components:
 
     ModelResponseType:
       type: object
-      $ref: ./schemas/api-schema.json#/definitions/ModelResponseType
+      $ref: ./schemas/deref/api-response-schema.json#/definitions/ModelResponseType
 
     VersionResponseType:
       type: object
-      $ref: ./schemas/api-schema.json#/definitions/VersionResponseType
+      $ref: ./schemas/deref/api-response-schema.json#/definitions/VersionResponseType
 
     Error:
       type: object

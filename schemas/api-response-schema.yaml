@@ -1,0 +1,34 @@
+
+$schema: http://json-schema.org/draft-07/schema#
+
+$id: api-response-schema.yaml
+
+properties:
+
+  modelResponse:
+    $ref: "#/definitions/ModelResponseType"
+
+  versionResponse:
+    $ref: "#/definitions/VersionResponseType"
+
+definitions:
+
+  ModelResponseType:
+    type: object
+    properties:
+      $schema:
+        type: string
+      data:
+        $ref: "api-model-schema.json#/properties/data"
+      links:
+        $ref: "api-model-schema.json#/properties/links"
+
+  VersionResponseType:
+    type: object
+    properties:
+      $schema:
+        type: string
+      data:
+        $ref: "api-version-schema.json#/properties/data"
+      links:
+        $ref: "api-version-schema.json#/properties/links"

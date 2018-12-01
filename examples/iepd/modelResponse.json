@@ -1,19 +1,17 @@
 {
   "$schema": "../../schemas/api-schema.json",
-  "modelResponse": {
-    "data": {
-      "name": "Hill Valley Arrest Report",
-      "source": "Hill Valley Police Department",
-      "summary": "The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.",
-      "description": "The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...",
-      "website": "https://example.com/hvpd/specifications/arrest-report/docs"
-    },
-    "links": {
-      "href": "/model/hvpd-arrest-rpt",
-      "versions": {
-        "count": 2,
-        "href": "/model/hvpd-arrest-rpt/versions"
-      }
+  "data": {
+    "name": "Hill Valley Arrest Report",
+    "source": "Hill Valley Police Department",
+    "summary": "The Hill Valley Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.",
+    "description": "The Hill Valley Police Department Arrest Report is part of a pilot project to extend the standard XYZ Arrest Report message with additional information.  This includes ...  A message is sent from ... when ... if ... to ...",
+    "website": "https://example.com/hvpd/specifications/arrest-report/docs"
+  },
+  "links": {
+    "href": "/model/hvpd-arrest-rpt",
+    "versions": {
+      "count": 2,
+      "href": "/model/hvpd-arrest-rpt/versions"
     }
   }
 }

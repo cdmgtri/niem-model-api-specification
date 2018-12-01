@@ -4,17 +4,20 @@
   "description": "Mock API specification for the NIEM model structure",
   "main": "jsdocs/index.js",
   "scripts": {
-    "build": "npm run convert && npm run deref && npm run test && npm run docs && echo \"'npm run jsdocs' must be run manually as needed because it requires updating the output by hand.\"",
+    "build": "npm-run-all convert deref test docs jsdocs test:dep",
     "docs": "redoc-cli bundle openapi.yaml && mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
-    "convert": "npm run convert:schemas && npm run convert:openapi",
+    "convert": "npm-run-all convert:*",
     "convert:schemas": "yaml2json -p -s schemas",
-    "deref": "json-dereference -s schemas/api-schema.yaml -o schemas/api-schema-deref.json && js-beautify schemas/api-schema-deref.json -o schemas/api-schema-deref.json",
     "convert:openapi": "speccy resolve openapi-base.yaml -j -o openapi.yaml",
+    "deref": "npm-run-all deref:*",
+    "deref:beautify": "foreach -g \"schemas/deref/*.json\" -x \"js-beautify schemas/deref/#{name}.json -o schemas/deref/#{name}.json\"",
+    "deref:exec": "foreach -g \"schemas/*.yaml\" -x \"json-dereference -s schemas/#{name}.yaml -o schemas/deref/#{name}.json\"",
     "jsdocs": "node src/build-jsdocs.js",
-    "test": "npm run test:schemas && npm run test:examples && npm run test:openapi",
-    "test:schemas": "ajv -s assets/json-schema-07.json -d \"schemas/*-schema-deref.json\"",
-    "test:examples": "ajv -s schemas/api-schema-deref.json -d \"examples/**/*.json\"",
+    "test": "npm-run-all test:*",
+    "test:schemas": "ajv -s assets/json-schema-07.json -d \"schemas/**/*.json\"",
+    "test:examples": "ajv -s schemas/deref/api-schema.json -d \"examples/**/*.json\"",
     "test:openapi": "speccy lint -s openapi-tags-alphabetical openapi.yaml",
+    "test:dep": "grep -Rin --color x-miro openapi.yaml || true",
     "watch:schemas": "npm-watch build",
     "watch:examples": "npm-watch test:examples"
   },
@@ -24,10 +27,12 @@
   "devDependencies": {
     "ajv-cli": "^3.0.0",
     "cash": "^0.8.0",
+    "foreach-cli": "^1.8.1",
     "js-beautify": "^1.8.8",
     "json-dereference-cli": "^0.1.2",
     "json-schema-to-jsdoc": "github:n3ps/json-schema-to-jsdoc",
     "niem-model-schema": "github:cdmgtri/niem-model-schema#dev",
+    "npm-run-all": "^4.1.5",
     "npm-watch": "^0.4.0",
     "redoc-cli": "^0.7.0",
     "replace": "^1.0.0",
@@ -51,5 +56,6 @@
       "extensions": "json"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+  }
 }
