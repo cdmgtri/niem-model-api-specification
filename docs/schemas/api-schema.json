@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "api-base-schema.json",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "data": {
+      "oneOf": [
+        {
+          "$ref": "api-model-schema.json#/properties/data"
+        },
+        {
+          "$ref": "api-version-schema.json#/properties/data"
+        }
+      ]
+    },
+    "links": {
+      "oneOf": [
+        {
+          "$ref": "api-model-schema.json#/properties/links"
+        },
+        {
+          "$ref": "api-version-schema.json#/properties/links"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "RelatedResourceType": {
+      "type": "object",
+      "description": "A data type for metadata about a singular resource related to the source resource.",
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "A relative label for a resource, such as a version number or a qualified name."
+        },
+        "href": {
+          "$ref": "#/definitions/hrefType"
+        }
+      }
+    },
+    "RelatedResourcesType": {
+      "type": "object",
+      "description": "A data type for metadata about potentially multiple resources related to the source resource.",
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "href": {
+          "$ref": "#/definitions/hrefType"
+        }
+      }
+    },
+    "uriType": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "hrefType": {
+      "$ref": "#/definitions/uriType",
+      "description": "A URI for the target resource.",
+      "example": "/resource/:resourceID"
+    }
+  },
+  "additionalProperties": false
+}
