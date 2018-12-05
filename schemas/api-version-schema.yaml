@@ -1,0 +1,38 @@
+
+$schema: http://json-schema.org/draft-07/schema#
+
+$id: api-version-schema.json
+
+properties:
+
+  $schema:
+    type: string
+
+  data:
+    $ref: ../node_modules/niem-model-schema/schemas/model-schema.json#/definitions/VersionType
+
+  links:
+    type: object
+    description: A data type for metadata about version-related resources.
+    properties:
+      href:
+        $ref: "api-schema.json#/definitions/hrefType"
+      zip:
+        $ref: "api-schema.json#/definitions/hrefType"
+        description: The location of the zip file for this version.
+      folder:
+        $ref: "api-schema.json#/definitions/hrefType"
+        description: The folder location for this version.
+      model:
+        $ref: "api-schema.json#/definitions/RelatedResourceType"
+      namespaces:
+        $ref: "api-schema.json#/definitions/RelatedResourcesType"
+      properties:
+        $ref: "api-schema.json#/definitions/RelatedResourcesType"
+      types:
+        $ref: "api-schema.json#/definitions/RelatedResourcesType"
+      codes:
+        $ref: "api-schema.json#/definitions/RelatedResourcesType"
+    additionalProperties: false
+
+additionalProperties: false
