@@ -1,1 +1,169 @@
-{"$schema":"http://json-schema.org/draft-07/schema#","$id":"api-version-schema.json","properties":{"$schema":{"type":"string"},"data":{"type":"object","description":"A data type for a specific set of versioned namespaces of a model.","properties":{"modelName":{"type":"string","description":"A name of the model to which this version belongs."},"version":{"type":"string","description":"A version number."},"draft":{"type":"string","description":"A sub-version number, such as a pre-release identifier.","example":"alpha1"},"baseNIEM":{"type":"string","description":"A NIEM release that this resource is based on.","example":"4.0"},"uri":{"type":"string","description":"A target namespace or other ID for this model version."},"changeSummary":{"type":"string","description":"A summary of the changes from the previous version, if applicable."},"location":{"type":"string","description":"A URL for the model version folder."},"conformanceTargets":{"type":"array","description":"One or more classes of artifact to which this artifact conforms.","items":{"type":"string"}},"more":{"type":"object","description":"Any additional metadata to be captured.","example":{"metadata.xml":{"Metadata":{"URI":null,"Name":null,"Summary":null,"Version":null}}}}},"additionalProperties":false},"links":{"type":"object","description":"A data type for metadata about version-related resources.","properties":{"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"},"zip":{"description":"The location of the zip file for this version.","example":"/resource/:resourceID","type":"string","format":"uri-reference"},"folder":{"description":"The folder location for this version.","example":"/resource/:resourceID","type":"string","format":"uri-reference"},"model":{"type":"object","description":"A data type for metadata about a singular resource related to the source resource.","properties":{"label":{"type":"string","description":"A relative label for a resource, such as a version number or a qualified name."},"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"}}},"namespaces":{"type":"object","description":"A data type for metadata about potentially multiple resources related to the source resource.","properties":{"count":{"type":"integer"},"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"}}},"properties":{"type":"object","description":"A data type for metadata about potentially multiple resources related to the source resource.","properties":{"count":{"type":"integer"},"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"}}},"types":{"type":"object","description":"A data type for metadata about potentially multiple resources related to the source resource.","properties":{"count":{"type":"integer"},"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"}}},"codes":{"type":"object","description":"A data type for metadata about potentially multiple resources related to the source resource.","properties":{"count":{"type":"integer"},"href":{"description":"A URI for the target resource.","example":"/resource/:resourceID","type":"string","format":"uri-reference"}}}},"additionalProperties":false}},"additionalProperties":false}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "api-version-schema.json",
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "data": {
+            "type": "object",
+            "description": "A data type for a specific set of versioned namespaces of a model.",
+            "properties": {
+                "modelName": {
+                    "type": "string",
+                    "description": "A name of the model to which this version belongs."
+                },
+                "version": {
+                    "type": "string",
+                    "description": "A version number."
+                },
+                "draft": {
+                    "type": "string",
+                    "description": "A sub-version number, such as a pre-release identifier.",
+                    "example": "alpha1"
+                },
+                "baseNIEM": {
+                    "type": "string",
+                    "description": "A NIEM release that this resource is based on.",
+                    "example": "4.0"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "A target namespace or other ID for this model version."
+                },
+                "changeSummary": {
+                    "type": "string",
+                    "description": "A summary of the changes from the previous version, if applicable."
+                },
+                "location": {
+                    "type": "string",
+                    "description": "A URL for the model version folder."
+                },
+                "conformanceTargets": {
+                    "type": "array",
+                    "description": "One or more classes of artifact to which this artifact conforms.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "more": {
+                    "type": "object",
+                    "description": "Any additional metadata to be captured.",
+                    "example": {
+                        "metadata.xml": {
+                            "Metadata": {
+                                "URI": null,
+                                "Name": null,
+                                "Summary": null,
+                                "Version": null
+                            }
+                        }
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "links": {
+            "type": "object",
+            "description": "A data type for metadata about version-related resources.",
+            "properties": {
+                "href": {
+                    "description": "A URI for the target resource.",
+                    "example": "/resource/:resourceID",
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "zip": {
+                    "description": "The location of the zip file for this version.",
+                    "example": "/resource/:resourceID",
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "folder": {
+                    "description": "The folder location for this version.",
+                    "example": "/resource/:resourceID",
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "model": {
+                    "type": "object",
+                    "description": "A data type for metadata about a singular resource related to the source resource.",
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "description": "A relative label for a resource, such as a version number or a qualified name."
+                        },
+                        "href": {
+                            "description": "A URI for the target resource.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        }
+                    }
+                },
+                "namespaces": {
+                    "type": "object",
+                    "description": "A data type for metadata about potentially multiple resources related to the source resource.",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "href": {
+                            "description": "A URI for the target resource.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "description": "A data type for metadata about potentially multiple resources related to the source resource.",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "href": {
+                            "description": "A URI for the target resource.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        }
+                    }
+                },
+                "types": {
+                    "type": "object",
+                    "description": "A data type for metadata about potentially multiple resources related to the source resource.",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "href": {
+                            "description": "A URI for the target resource.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        }
+                    }
+                },
+                "codes": {
+                    "type": "object",
+                    "description": "A data type for metadata about potentially multiple resources related to the source resource.",
+                    "properties": {
+                        "count": {
+                            "type": "integer"
+                        },
+                        "href": {
+                            "description": "A URI for the target resource.",
+                            "example": "/resource/:resourceID",
+                            "type": "string",
+                            "format": "uri-reference"
+                        }
+                    }
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

@@ -35,6 +35,41 @@ let NIEMModelLinks= {};
 
 
 /**
+  * A data type representing the NIEM data model, an IEPD, an EIEM, or another kind of NIEM-based data model.
+  * @typedef {Object} NIEMModelsType 
+  *
+  * @property {string} [name] - A name of a model. 
+  * @property {string} [summary] - A definition or summary statement of a model. 
+  * @property {string} [description] - A detailed description of a model. 
+  * @property {enum} [kind] - A kind of model. 
+  * @property {string} [source] - An authoritative source for the model. 
+  * @property {string} [contactInfo] - A set of contact information for the model. 
+  * @property {string} [website] - A URL for an informational website about this model. 
+  * @property {NIEMVersion[]} [versions] - A set of versions that belong to this model. 
+  */
+
+
+/** @type {NIEMModelsType} */ 
+let NIEMModels= {}; 
+
+
+/**
+  * A data type for metadata about model-related resources.
+  * @typedef {Object} NIEMModelsLinksType 
+  *
+  * @property {string} [id] - An identifier for a model. 
+  * @property {string} [href] - A url for this model 
+  * @property {object} [versions] - A data type for metadata about potentially multiple resources related to the source resource. 
+  * @property {integer} [versions.count] -  
+  * @property {string} [versions.href] - A URI for the target resource. 
+  */
+
+
+/** @type {NIEMModelsLinksType} */ 
+let NIEMModelsLinks= {}; 
+
+
+/**
   * Represents a undefined object
   * @typedef {Object} NIEMModelResponseType 
   *
@@ -151,4 +186,4 @@ let NIEMVersion= {};
 let NIEMVersionLinks= {}; 
 
 
-module.exports = {NIEMModel, NIEMModelLinks, NIEMModelResponse, NIEMVersionResponse, NIEMVersion, NIEMVersionLinks};
+module.exports = {NIEMModel, NIEMModelLinks, NIEMModels, NIEMModelsLinks, NIEMModelResponse, NIEMVersionResponse, NIEMVersion, NIEMVersionLinks};
