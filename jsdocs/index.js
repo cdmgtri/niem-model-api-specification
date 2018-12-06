@@ -112,10 +112,12 @@ let NIEMModelResponse= {};
   * @property {array} [data.conformanceTargets] - One or more classes of artifact to which this artifact conforms. 
   * @property {object} [data.more] - Any additional metadata to be captured. 
   * @property {object} [links] - A data type for metadata about version-related resources. 
+  * @property {string} [links.id] -  
   * @property {string} [links.href] - A URI for the target resource. 
   * @property {string} [links.zip] - The location of the zip file for this version. 
   * @property {string} [links.folder] - The folder location for this version. 
   * @property {object} [links.model] - A data type for metadata about a singular resource related to the source resource. 
+  * @property {string} [links.model.id] -  
   * @property {string} [links.model.label] - A relative label for a resource, such as a version number or a qualified name. 
   * @property {string} [links.model.href] - A URI for the target resource. 
   * @property {object} [links.namespaces] - A data type for metadata about potentially multiple resources related to the source resource. 
@@ -161,10 +163,12 @@ let NIEMVersion= {};
   * A data type for metadata about version-related resources.
   * @typedef {Object} NIEMVersionLinksType 
   *
+  * @property {string} [id] -  
   * @property {string} [href] - A URI for the target resource. 
   * @property {string} [zip] - The location of the zip file for this version. 
   * @property {string} [folder] - The folder location for this version. 
   * @property {object} [model] - A data type for metadata about a singular resource related to the source resource. 
+  * @property {string} [model.id] -  
   * @property {string} [model.label] - A relative label for a resource, such as a version number or a qualified name. 
   * @property {string} [model.href] - A URI for the target resource. 
   * @property {object} [namespaces] - A data type for metadata about potentially multiple resources related to the source resource. 

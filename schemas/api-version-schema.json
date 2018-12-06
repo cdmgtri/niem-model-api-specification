@@ -12,6 +12,9 @@
       "type": "object",
       "description": "A data type for metadata about version-related resources.",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "href": {
           "$ref": "api-schema.json#/definitions/hrefType"
         },

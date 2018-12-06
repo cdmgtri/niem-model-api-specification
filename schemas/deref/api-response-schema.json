@@ -208,6 +208,9 @@
                     "type": "object",
                     "description": "A data type for metadata about version-related resources.",
                     "properties": {
+                        "id": {
+                            "type": "string"
+                        },
                         "href": {
                             "description": "A URI for the target resource.",
                             "example": "/resource/:resourceID",
@@ -230,6 +233,9 @@
                             "type": "object",
                             "description": "A data type for metadata about a singular resource related to the source resource.",
                             "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
                                 "label": {
                                     "type": "string",
                                     "description": "A relative label for a resource, such as a version number or a qualified name."
@@ -515,6 +521,9 @@
                     "type": "object",
                     "description": "A data type for metadata about version-related resources.",
                     "properties": {
+                        "id": {
+                            "type": "string"
+                        },
                         "href": {
                             "description": "A URI for the target resource.",
                             "example": "/resource/:resourceID",
@@ -537,6 +546,9 @@
                             "type": "object",
                             "description": "A data type for metadata about a singular resource related to the source resource.",
                             "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
                                 "label": {
                                     "type": "string",
                                     "description": "A relative label for a resource, such as a version number or a qualified name."
