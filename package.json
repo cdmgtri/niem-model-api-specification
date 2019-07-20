@@ -5,7 +5,7 @@
   "main": "jsdocs/index.js",
   "scripts": {
     "build": "npm-run-all convert deref test docs jsdocs test:dep",
-    "docs": "redoc-cli bundle openapi.yaml && mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
+    "docs": "redoc-cli bundle openapi.yaml && shx mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
     "convert": "npm-run-all convert:*",
     "convert:schemas": "yaml2json -p -s schemas",
     "convert:openapi": "speccy resolve openapi-base.yaml -j -o openapi.yaml",
@@ -26,17 +26,17 @@
   "license": "ISC",
   "devDependencies": {
     "ajv-cli": "^3.0.0",
-    "cash": "^0.8.0",
     "foreach-cli": "^1.8.1",
     "js-beautify": "^1.10.1",
     "json-dereference-cli": "^0.1.2",
     "json-schema-to-jsdoc": "github:n3ps/json-schema-to-jsdoc",
     "niem-model-schema": "github:cdmgtri/niem-model-schema#dev",
     "npm-run-all": "^4.1.5",
-    "npm-watch": "^0.4.0",
-    "redoc-cli": "^0.7.0",
+    "npm-watch": "^0.6.0",
+    "redoc-cli": "^0.8.5",
     "replace": "^1.1.0",
-    "speccy": "^0.8.7",
+    "shx": "^0.3.2",
+    "speccy": "^0.11.0",
     "yamljs": "^0.3.0"
   },
   "watch": {
