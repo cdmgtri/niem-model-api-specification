@@ -1,0 +1,13 @@
+{
+  "yaml.schemas": {
+    "http://json-schema.org/draft-07/schema": "/**/*schema.yaml",
+    "http://json.schemastore.org/package": "/package.yaml",
+    "http://json-schema.org/draft-04/schema": "test.yaml"
+  },
+  "cSpell.words": [
+    "cli",
+    "hvpd",
+    "redoc",
+    "speccy"
+  ]
+}
