@@ -8,7 +8,7 @@
     "docs": "redoc-cli bundle openapi.yaml && shx mv redoc-static.html docs/index.html && replace \"ReDoc documentation\" \"NIEM Model API\" docs/index.html",
     "convert": "npm-run-all convert:*",
     "convert:schemas": "yaml2json -p -s schemas",
-    "convert:openapi": "speccy resolve openapi-base.yaml -j -o openapi.yaml",
+    "convert:openapi": "swagger2openapi --resolve --debug --indent 2 -o openapi.yaml openapi-base.yaml",
     "deref": "npm-run-all deref:*",
     "deref:exec": "foreach -g \"schemas/*.yaml\" -x \"json-dereference -s schemas/#{name}.yaml -o schemas/deref/#{name}.json\"",
     "deref:beautify": "foreach -g \"schemas/deref/*.json\" -x \"js-beautify schemas/deref/#{name}.json -o schemas/deref/#{name}.json\"",
@@ -16,7 +16,7 @@
     "test": "npm-run-all test:*",
     "test:schemas": "ajv -s assets/json-schema-07.json -d \"schemas/**/*.json\"",
     "test:examples": "ajv -s schemas/deref/api-schema.json -d \"examples/**/*.json\"",
-    "test:openapi": "speccy lint -s openapi-tags-alphabetical openapi.yaml",
+    "test:openapi": "lint-openapi openapi-base.yaml",
     "test:dep": "grep -Rin --color x-miro openapi.yaml || true",
     "watch:schemas": "npm-watch build",
     "watch:examples": "npm-watch test:examples"
@@ -27,16 +27,17 @@
   "devDependencies": {
     "ajv-cli": "^3.1.0",
     "foreach-cli": "^1.8.1",
+    "ibm-openapi-validator": "^0.26.0",
     "js-beautify": "^1.10.3",
     "json-dereference-cli": "^0.1.2",
     "json-schema-to-jsdoc": "github:n3ps/json-schema-to-jsdoc",
     "niem-model-schema": "github:cdmgtri/niem-model-schema#dev",
     "npm-run-all": "^4.1.5",
     "npm-watch": "^0.6.0",
-    "redoc-cli": "^0.8.6",
+    "redoc-cli": "^0.9.7",
     "replace": "^1.1.5",
     "shx": "^0.3.2",
-    "speccy": "^0.11.0",
+    "swagger2openapi": "^5.3.4",
     "yamljs": "^0.3.0"
   },
   "watch": {
@@ -55,6 +56,5 @@
       ],
       "extensions": "json"
     }
-  },
-  "dependencies": {}
+  }
 }
