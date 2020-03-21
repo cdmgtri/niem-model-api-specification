@@ -29,6 +29,9 @@ let NIEMModel= {};
   * @property {string} [versions.href] - A URI for the target resource.
   */
 
+/** @type {NIEMModelLinksType} */
+let NIEMModelLinks = {};
+
 
 /**
   * A data type for a specific set of versioned namespaces of a model.
@@ -41,35 +44,8 @@ let NIEMModel= {};
   * @property {string} [versions.href] - A URI for the target resource.
   */
 
-
-/**
-  * A data type for metadata about version-related resources.
-  * @typedef {Object} NIEMVersionLinksType
-  *
-  * @property {string} [href] - A URI for the target resource.
-  * @property {string} [zip] - The location of the zip file for this version.
-  * @property {string} [folder] - The folder location for this version.
-  * @property {object} [model] - A data type for metadata about a singular resource related to the source resource.
-  * @property {string} [model.label] - A relative label for a resource, such as a version number or a qualified name.
-  * @property {string} [model.href] - A URI for the target resource.
-  * @property {object} [namespaces] - A data type for metadata about potentially multiple resources related to the source resource.
-  * @property {integer} [namespaces.count] -
-  * @property {string} [namespaces.href] - A URI for the target resource.
-  * @property {object} [properties] - A data type for metadata about potentially multiple resources related to the source resource.
-  * @property {integer} [properties.count] -
-  * @property {string} [properties.href] - A URI for the target resource.
-  * @property {object} [types] - A data type for metadata about potentially multiple resources related to the source resource.
-  * @property {integer} [types.count] -
-  * @property {string} [types.href] - A URI for the target resource.
-  * @property {object} [codes] - A data type for metadata about potentially multiple resources related to the source resource.
-  * @property {integer} [codes.count] -
-  * @property {string} [codes.href] - A URI for the target resource.
-  */
-
-
 /** @type {NIEMVersionType} */
-let NIEMVersion= {};
-
+let NIEMVersion;
 
 /**
   * A data type for metadata about version-related resources.
@@ -102,4 +78,4 @@ let NIEMVersion= {};
 let NIEMVersionLinks= {};
 
 
-module.exports = {NIEMModel, NIEMModelLinks, NIEMModels, NIEMModelsLinks, NIEMModelResponse, NIEMVersionResponse, NIEMVersion, NIEMVersionLinks};
+module.exports = {NIEMModel, NIEMModelLinks, NIEMVersion, NIEMVersionLinks};
